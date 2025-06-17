@@ -1,0 +1,42 @@
+.sidebar-main-container {
+  height: 100%;
+  width: 100%;
+}
+
+.sidebar-outer-container {
+  /* border: 1px solid black; */
+  height: 413px;
+  width: 80px;
+  overflow: hidden;
+
+}
+
+.sidebar-inner-container {
+  /* border: 1px solid black; */
+  width: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 13px;
+  transition: margin 1s;
+}
+
+.sidebar-arrow {
+  /* border: 1px solid black; */
+  width: 20px;
+  height: 10px;
+  cursor: pointer;
+}
+
+
+.sidebar-down-arrow {
+  transform: rotate(180deg);
+
+}
+
+.sidebar-item-container {
+  width: 70px;
+  height: 70px;
+  border: solid black 1px;
+  cursor: pointer;
+}

@@ -12,6 +12,7 @@ const MainDirectionButton = ({direction} : {direction: string}) => {
       width: '30px',
       position: 'absolute',
       cursor: 'pointer',
+      zIndex: '200',
     }
     switch (direction) {
       case "up":

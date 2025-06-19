@@ -6,12 +6,14 @@ import { ItemsProvider } from './contexts/ItemsContext'
 import { compose } from './contexts/Provider'
 import { AllItemsProvider } from './contexts/AllItemsContext';
 import { ActiveItemProvider } from './contexts/ActiveItemContext'
+import { PuzzleProvider } from './contexts/PuzzleContext'
 
 const providersList = [
   SceneProvider, 
   ItemsProvider,
   AllItemsProvider,
-  ActiveItemProvider
+  ActiveItemProvider,
+  PuzzleProvider,
 ]
 
 const AppProvider: React.FC<{ children: React.ReactNode }> = compose(providersList);

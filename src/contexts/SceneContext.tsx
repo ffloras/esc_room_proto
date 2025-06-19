@@ -28,6 +28,7 @@ export const SceneProvider: FC<SceneProviderType> = ({children}) => {
   const [currentStage, setCurrentStage] = useState<number>(4);
   const [prevStage, setPrevStage] = useState<number>(0);
   const [currentScene, setCurrentScene] = useState<string>("main");
+  const ceiling = 5;
 
   const start = () => {
     setCurrentStage(0);
@@ -37,10 +38,10 @@ export const SceneProvider: FC<SceneProviderType> = ({children}) => {
     switch (direction) {
       case "up":
         setPrevStage(currentStage);
-        setCurrentStage(5);
+        setCurrentStage(ceiling);
         break;
       case "down":
-        currentStage == 5 ? setCurrentStage(prevStage) : setCurrentScene("main");
+        currentStage == ceiling ? setCurrentStage(prevStage) : setCurrentScene("main");
         break;
       case "left":
         setCurrentStage((prev) => (prev + numRooms- 1) % numRooms);

@@ -1,14 +1,13 @@
-import { use } from "react";
-import { AllItemsContext } from "../../../contexts/AllItemsContext";
+
 import mirrorMainImg from "../../../assets/img/scenes/mainRoom.png";
 import BasicItem from "../../items/BasicItem";
 import BasicSubscene from "../../subscenes/BasicSubscene";
 import MainDirectionButton from "../../mainGame/MainDirectionButton";
 import { MirrorRoomSubscenes } from "../../../db/scenesDB";
+import "../../../css/mirrorRoom.css";
 
 
 const MirrorRoom = () => {
-  const {items} = use(AllItemsContext);
 
   return (
     <div className="scene-container" style={{
@@ -19,7 +18,10 @@ const MirrorRoom = () => {
       <BasicItem name="test"/>
       <BasicItem name="test2"/>
 
-      <BasicSubscene {...MirrorRoomSubscenes[0]}/>
+      {MirrorRoomSubscenes.map((subscene, index) => (
+        <BasicSubscene {...subscene} key={index}/>
+      ))}
+      
 
       <MainDirectionButton direction="left"/>
       <MainDirectionButton direction="up"/>

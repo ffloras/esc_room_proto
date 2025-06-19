@@ -1,0 +1,14 @@
+.starBox-container {
+  position: absolute;
+  top: 91px;
+  left: 203px;
+}
+
+.starBox-row {
+  display: flex;
+}
+
+.starBox-piece {
+  width: 100px;
+  height: 63px;
+}

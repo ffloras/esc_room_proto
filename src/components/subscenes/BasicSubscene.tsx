@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { use } from 'react'
 import { type SubsceneProp } from '../../db/scenesDB'
+import { SceneContext } from '../../contexts/SceneContext'
 
 const BasicSubscene: React.FC<SubsceneProp> = (subscene) => {
 //img, name, top, left, next
+const {setCurrentScene} = use(SceneContext)
 
 const changeSubscene = () => {
-
+  setCurrentScene(subscene.next);
 }
 
   return (
@@ -17,7 +19,7 @@ const changeSubscene = () => {
           position: "absolute",
           top:`${ subscene.top}px`,
           left:`${ subscene.left}px`,
-          scale: "1",
+          clipPath: subscene.shape,
         }}
         onClick={changeSubscene} 
       />

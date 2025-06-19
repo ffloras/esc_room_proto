@@ -32,3 +32,10 @@
   position: relative;
   height: 100%;
 }
+
+.text-box {
+  position: absolute;
+  border: 1px solid black;
+  background-color: white;
+  padding: 0 5px 0 5px;
+}

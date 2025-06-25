@@ -5,16 +5,16 @@ import { Stages } from "../../db/scenesDB"
 
 
 const Game = () => {
-  const {currentStage, currentScene} = use(SceneContext);
+  const {stage, scene} = use(SceneContext);
   const startingMenu = 4;
 
   return (
     <div className="game-window">
-      <div className="side-display" style={{display: currentStage == startingMenu ? "none" : "block"}}>
+      <div className="side-display" style={{display: stage.current == startingMenu ? "none" : "block"}}>
         <SidebarContainer/>
       </div>
-      <div className="scene-window" style={{width: currentStage == startingMenu ? "800px" : "700px"}}>
-        {React.createElement(Stages[currentStage][currentScene])}
+      <div className="scene-window" style={{width: stage.current == startingMenu ? "800px" : "700px"}}>
+        {React.createElement(Stages[stage.current][scene.current])}
       </div>
       
     </div>

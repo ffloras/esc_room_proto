@@ -1,4 +1,4 @@
-import { use, type FC } from "react";
+import { use, useEffect, type FC } from "react";
 import { ItemsContext} from "../../contexts/ItemsContext";
 import { AllItemsContext } from "../../contexts/AllItemsContext";
 
@@ -8,9 +8,10 @@ type BasicItemProp = {
 
 const BasicItem: FC<BasicItemProp> = ({name}) => {
   const {addSidebarItem} = use(ItemsContext);
-  const {items, setItemObtained} = use(AllItemsContext)
+  const {items, setItemObtained} = use(AllItemsContext);
 
   const obtainItem = () =>{
+    console.log("click")
     addSidebarItem(name);
     setItemObtained(name, true);
   }

@@ -1,7 +1,14 @@
 .starBox-container {
   position: absolute;
-  top: 91px;
-  left: 203px;
+  top: 92px;
+  left: 205px;
+}
+
+.starBoxImg {
+  position: absolute;
+  top: 60px;
+  left: 168px;
+  z-index: 10;
 }
 
 .starBox-row {
@@ -11,4 +18,13 @@
 .starBox-piece {
   width: 100px;
   height: 63px;
+  z-index: 30;
 }
+
+.starBox-drawer {
+  position: absolute;
+  left: 183px;
+  transition: top 0.5s;
+
+}
+

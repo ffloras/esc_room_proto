@@ -13,7 +13,7 @@ const ClockRoom = () => {
       <MainDirectionButton direction="right"/>
 
       {ClockRoomSubscenes.map((subscene, index) => (
-        <BasicSubscene {...subscene} key={index}/>
+        <BasicSubscene {...subscene} prevScene="main" key={index}/>
       ))}
 
     </div>

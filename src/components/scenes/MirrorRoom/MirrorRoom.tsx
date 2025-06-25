@@ -3,7 +3,7 @@ import mirrorMainImg from "../../../assets/img/scenes/mainRoom.png";
 import BasicItem from "../../items/BasicItem";
 import BasicSubscene from "../../subscenes/BasicSubscene";
 import MainDirectionButton from "../../mainGame/MainDirectionButton";
-import { MirrorRoomSubscenes } from "../../../db/scenesDB";
+import { MirrorRoomSubscenes} from "../../../db/scenesDB";
 import "../../../css/mirrorRoom.css";
 
 
@@ -15,11 +15,11 @@ const MirrorRoom = () => {
       }}
     >
       MirrorRoom
-      <BasicItem name="test"/>
-      <BasicItem name="test2"/>
+      <BasicItem name="agPotion"/>
+      <BasicItem name="coPotion"/>
 
       {MirrorRoomSubscenes.map((subscene, index) => (
-        <BasicSubscene {...subscene} key={index}/>
+        <BasicSubscene {...subscene} prevScene="main" key={index}/>
       ))}
       
 

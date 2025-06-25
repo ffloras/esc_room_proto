@@ -5,7 +5,7 @@ import type { ComponentType } from "react";
 import MirrorRoom from "../components/scenes/MirrorRoom/MirrorRoom";
 import CandleRoom from "../components/scenes/CandleRoom";
 import ClockRoom from "../components/scenes/ClockRoom/ClockRoom";
-import ChairRoom from "../components/scenes/ChairRoom";
+import ChairRoom from "../components/scenes/ChairRoom/ChairRoom";
 import StartMenu from "../components/scenes/StartMenu";
 import Ceiling from "../components/scenes/Ceiling";
 
@@ -17,6 +17,9 @@ import Mirror from "../components/scenes/MirrorRoom/Mirror";
 import starBoxImg from '../assets/img/subscenes/clockRoom/starBox.png'
 import StarBox from "../components/scenes/ClockRoom/StarBox";
 
+//Chair Room subscenes
+import flowerDrawerImg from "../assets/img/subscenes/chairRoom/flowerDrawer.png"
+import FlowerDrawer from "../components/scenes/ChairRoom/FlowerDrawer";
 
 type StagesProp = {
   [key: number]: ScenesProp,
@@ -39,7 +42,8 @@ export const Stages: StagesProp = {
   },
   2: 
   {
-    main: ChairRoom
+    main: ChairRoom,
+    flowerDrawer: FlowerDrawer
   },
   3: 
   {
@@ -58,7 +62,6 @@ export const Stages: StagesProp = {
 export type SubsceneProp = {
   name: string;
   img: string;
-  imgPrev: string | null,
   top: number;
   left: number;
   shape: string;
@@ -69,7 +72,6 @@ export const MirrorRoomSubscenes: SubsceneProp[] = [
   {
     name: "mirror",
     img: mirrorImg,
-    imgPrev: null,
     top: 70,
     left: 450,
     shape: "polygon(62% 0, 79% 8%, 100% 19%, 100% 53%, 98% 80%, 92% 100%, 7% 100%, 0 91%, 4% 23%, 26% 9%)",
@@ -81,10 +83,20 @@ export const ClockRoomSubscenes: SubsceneProp[] = [
   {
     name: "starBox",
     img: starBoxImg,
-    imgPrev: null,
     top: 250,
     left: 400,
     shape: "polygon(100% 87.38%, 100% 17.83%, 50% 0%, 0% 8.11%, 0% 76.16%, 50% 100%)",
     next: "starBox",
+  },
+]
+
+export const ChairRoomSubscenes: SubsceneProp[] = [
+  {
+    name: "flowerDrawer",
+    img: flowerDrawerImg,
+    top: 230,
+    left: 120,
+    shape: "",
+    next: "flowerDrawer",
   },
 ]

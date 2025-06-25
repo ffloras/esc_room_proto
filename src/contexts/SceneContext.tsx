@@ -1,21 +1,31 @@
 import React, { createContext, useState, type ReactNode, type FC } from "react";
 
+type stageProvider = {
+  current: number;
+  prev: number;
+}
+
+type sceneProvider = {
+  current: string;
+  prev: string;
+}
+
 type SceneContextType = {
-  currentStage: number;
-  prevStage: number;
+  stage: stageProvider;
   start: () => void;
   changeStage: (direction: string) => void;
-  currentScene: string;
-  setCurrentScene: React.Dispatch<React.SetStateAction<string>>;
+  scene: sceneProvider;
+  setCurrentScene: (scene: string) => void;
+  setPrevScene: (scene: string) => void;
 }
 
 export const SceneContext = createContext<SceneContextType>({
-  currentStage: 4,
-  prevStage: 0,
+  stage: {current: 4, prev: 0},
   start: () => {},
   changeStage: () => {},
-  currentScene: "main",
+  scene: {current: "", prev: ""},
   setCurrentScene: () => {},
+  setPrevScene: () => {},
 })
 
 type SceneProviderType = {
@@ -24,38 +34,53 @@ type SceneProviderType = {
 
 const numRooms: number = 4;
 
+
+
 export const SceneProvider: FC<SceneProviderType> = ({children}) => {
-  const [currentStage, setCurrentStage] = useState<number>(4);
-  const [prevStage, setPrevStage] = useState<number>(0);
-  const [currentScene, setCurrentScene] = useState<string>("main");
+  const [stage, setStage] = useState<stageProvider>({
+    current: 4,
+    prev: 0,
+  })
+  const [scene, setScene] = useState<sceneProvider>({
+    current: "main",
+    prev: "",
+  })
+
   const ceiling = 5;
 
   const start = () => {
-    setCurrentStage(0);
+    setStage((prev) => ({...prev, current: 0}));
+  }
+
+  const setCurrentScene = (scene: string) => {
+    setScene((prev) => ({...prev, current: scene}))
+  }
+
+  const setPrevScene = (scene: string) => {
+    setScene((prev) => ({...prev, prev: scene}))
   }
 
   const changeStage = (direction: string) => {
     switch (direction) {
       case "up":
-        setPrevStage(currentStage);
-        setCurrentStage(ceiling);
+        setStage((prev) => ({current: ceiling, prev: prev.current}));
         break;
       case "down":
-        currentStage == ceiling ? setCurrentStage(prevStage) : setCurrentScene("main");
+        stage.current == ceiling ? setStage((prev) => ({...prev, current: prev.prev})) : setCurrentScene(scene.prev);
         break;
       case "left":
-        setCurrentStage((prev) => (prev + numRooms- 1) % numRooms);
+        setStage((prev) => ({...prev, current: (prev.current + numRooms- 1) % numRooms}));
         break;
       case "right":
-        setCurrentStage((prev) => (prev + 1) % numRooms);
+        setStage((prev) => ({...prev, current: (prev.current + 1) % numRooms}));
         break;
       default:
-        setCurrentStage(currentStage);
+        setStage((prev) => prev);
     }
   }
 
   return (
-    <SceneContext.Provider value={{currentStage, prevStage, start, changeStage, currentScene, setCurrentScene}}>
+    <SceneContext.Provider value={{stage, start, changeStage, scene, setCurrentScene, setPrevScene}}>
       {children}
     </SceneContext.Provider>
   )

@@ -1,20 +1,144 @@
 .ceiling-slider {
   position: absolute;
   width: 30px;
-  height: 120px;
+  height: 138px;
   background: no-repeat;
-  /* border: 1px black solid; */
+  /* border: 1px pink solid; */
   z-index: 5;
-  top: 20px;
-  left: 535px;
+  top: 10px;
+  left: 533px;
 }
 
 .ceiling-thumb {
-  width: 22px;
-  height: 22px;
+  width: 25px;
+  height: 17px;
   position: absolute;
   /* border: 1px black solid; */
   background: no-repeat;
   z-index: 10;
   top: 0px;
+  left: -4px;
+  cursor: pointer;
 }
+
+.ceiling-gears {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}
+
+.gear-slot {
+  position: absolute;
+  right: 17px;
+  top: 41px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.ceiling-text {
+  position: absolute;
+  background-color: white;
+  border: 1px solid black;
+  right: 6px;
+  top: 6px;
+  padding: 0 2px 0 2px;
+}
+
+.center-gear {
+  position: absolute;
+  left: 278px;
+  top: 156px;
+}
+
+.center-star {
+  position: absolute;
+  left: 31px;
+  top: 34px;
+}
+
+.topLeft-gear {
+  position: absolute;
+  left: 52px;
+  top: 35px;
+}
+
+.topLeft-star {
+  position: absolute;
+  left: 42px;
+  top: 41px;
+}
+
+.topCenter-gear {
+  position: absolute;
+  left: 265px;
+  top: 65px;
+}
+
+.topCenter-star {
+  position: absolute;
+  left: 31px;
+  top: 28px;
+}
+
+.centerLeft-gear {
+  position: absolute;
+  left: 145px;
+  top: 185px;
+}
+
+.centerLeft-star {
+  position: absolute;
+  left: 35px;
+  top: 32px;
+}
+
+.centerRight-gear {
+  position: absolute;
+  left: 441px;
+  top: 160px;
+}
+
+.centerRight-star {
+  position: absolute;
+  left: 41px;
+  top: 38px;
+}
+
+.bottomLeft-gear {
+  position: absolute;
+  left: 85px;
+  top: 298px;
+}
+
+.bottomLeft-star {
+  position: absolute;
+  left: 39px;
+  top: 39px;
+}
+
+.bottomCenter-gear {
+  position: absolute;
+  left: 318px;
+  top: 310px;
+}
+
+.bottomCenter-star {
+  position: absolute;
+  left: 30px;
+  top: 29px;
+}
+
+.bottomRight-gear {
+  position: absolute;
+  left: 522px;
+  top: 310px;
+}
+
+.bottomRight-star {
+  position: absolute;
+  left: 38px;
+  top: 38px;
+}
+
+

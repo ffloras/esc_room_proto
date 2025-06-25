@@ -2,12 +2,17 @@ import React, { use } from 'react'
 import { type SubsceneProp } from '../../db/scenesDB'
 import { SceneContext } from '../../contexts/SceneContext'
 
-const BasicSubscene: React.FC<SubsceneProp> = (subscene) => {
+type BasicSubsceneProp = SubsceneProp & {
+  prevScene: string;
+}
+
+const BasicSubscene: React.FC<BasicSubsceneProp> = (subscene) => {
 //img, name, top, left, next
-const {setCurrentScene} = use(SceneContext)
+const {setCurrentScene, setPrevScene} = use(SceneContext)
 
 const changeSubscene = () => {
   setCurrentScene(subscene.next);
+  setPrevScene(subscene.prevScene);
 }
 
   return (

@@ -10,7 +10,8 @@ type ItemsContextProp = {
   currentItemsList: (CurrentItemProp | null)[];
   addSidebarItem: (name: string) => void;
   containerMargin: number;
-  setContainerMargin: React.Dispatch<React.SetStateAction<number>>
+  setContainerMargin: React.Dispatch<React.SetStateAction<number>>;
+  removeSidebarItem: (name: string) => void;
 }
 
 export const ItemsContext = createContext<ItemsContextProp>({
@@ -18,6 +19,7 @@ export const ItemsContext = createContext<ItemsContextProp>({
   addSidebarItem: () => { },
   containerMargin: 0,
   setContainerMargin: () => {},
+  removeSidebarItem: () => {},
 })
 
 type ItemsProviderType = { 
@@ -54,14 +56,22 @@ export const ItemsProvider: FC<ItemsProviderType> = ({ children }) => {
     setContainerMargin(lowerLimit)
   }
 
+  const removeSidebarItem = (name: string) => {
+    if (currentItemsList.length <= 5) {
+      setCurrentItemsList((prev) => [...(prev.filter((item) => item?.name != name)), null])
+    } else {
+      setCurrentItemsList((prev) => (prev.filter((item) => item?.name != name)))
+    }
+  }
 
   return (
     <ItemsContext.Provider value={
       { 
         currentItemsList, 
-        addSidebarItem, 
+        addSidebarItem,
+        removeSidebarItem,
         containerMargin, 
-        setContainerMargin, 
+        setContainerMargin,
       }
     }>
       {children}

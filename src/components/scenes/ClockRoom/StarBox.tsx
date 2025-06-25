@@ -11,8 +11,11 @@ import centerRight from '../../../assets/img/subscenes/clockRoom/starBoxPieces/c
 import bottomLeft from '../../../assets/img/subscenes/clockRoom/starBoxPieces/bottomLeft.png'
 import bottomCenter from '../../../assets/img/subscenes/clockRoom/starBoxPieces/bottomCenter.png'
 import bottomRight from '../../../assets/img/subscenes/clockRoom/starBoxPieces/bottomRight.png'
-import { ItemsContext } from "../../../contexts/ItemsContext";
+//drawer components
+import starBoxDrawerImg from '../../../assets/img/subscenes/clockRoom/starBoxPieces/starBoxDrawer.png'
+//contexts
 import { PuzzleContext } from "../../../contexts/PuzzleContext";
+import BasicItem from "../../items/BasicItem";
 
 const ansArray: (string | null)[][] =
   [
@@ -36,7 +39,6 @@ const questArray: (string | null)[][] =
   ];
 
 const StarBox = () => {
-  const { currentItemsList } = use(ItemsContext);
   const { puzzleUnlocked, setPuzzleUnlocked } = use(PuzzleContext);
 
   const [puzzleArray, setPuzzleArray] = useState<(string | null)[][]>(puzzleUnlocked.starBox ? ansArray : testArray)
@@ -82,7 +84,10 @@ const StarBox = () => {
   }, [puzzleArray])
 
   return (
-    <div className='scene-container' style={{ backgroundImage: `url(${starBoxImg})` }}>
+    <div className='scene-container'>
+      <div className="starBoxImg">
+        <img src={starBoxImg} alt="starBox"/>
+      </div>
       <div className="starBox-container">
         {puzzleArray.map((row, i) => (
           <div className="starBox-row" key={i}>
@@ -97,6 +102,14 @@ const StarBox = () => {
             ))}
           </div>
         ))}
+      </div>
+      <div className="starBox-drawer"
+        style={{
+          top: puzzleUnlocked.starBox? '182px' : '104px'
+        }}
+      >
+        <img src={`${starBoxDrawerImg}`} alt="starbox drawer" />
+        <BasicItem name="gear"/>
       </div>
       <MainDirectionButton direction='down' />
     </div>

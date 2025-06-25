@@ -1,4 +1,3 @@
-import testImg from "../assets/img/items/item.png"
 import gearImg from "../assets/img/items/gear.png"
 import flowerPotionInDrawerImg from "../assets/img/subscenes/chairRoom/flowerDrawerPotionBottom.png"
 import agPotionImg from "../assets/img/items/flowerAgUnselected.png"
@@ -30,7 +29,7 @@ export const Items: ItemsProp = {
     name: "Ag Potion",
     img: agPotionImg,
     isObtained: false,
-    top: 200,
+    top: 81,
     left: 200,
     shape: "ag-potion xs"
   },
@@ -38,7 +37,7 @@ export const Items: ItemsProp = {
     name: "Co Potion",
     img: coPotionImg,
     isObtained: false,
-    top: 100,
+    top: 71,
     left: 250,
     shape: "circle sm"
   },

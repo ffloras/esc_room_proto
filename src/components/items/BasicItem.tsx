@@ -1,4 +1,4 @@
-import { use, useEffect, type FC } from "react";
+import { use, type FC } from "react";
 import { ItemsContext} from "../../contexts/ItemsContext";
 import { AllItemsContext } from "../../contexts/AllItemsContext";
 

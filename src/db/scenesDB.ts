@@ -12,6 +12,8 @@ import Ceiling from "../components/scenes/Ceiling";
 //Mirror Room subscenes
 import mirrorImg from "../assets/img/subscenes/mainRoom/mirror.png"
 import Mirror from "../components/scenes/MirrorRoom/Mirror";
+import paintingPuzzleImg from "../assets/img/subscenes/mainRoom/paintingPuzzle.png"
+import PaintingPuzzle from '../components/scenes/MirrorRoom/PaintingPuzzle'
 
 //Clock Room subscenes
 import starBoxImg from '../assets/img/subscenes/clockRoom/starBox.png'
@@ -34,6 +36,7 @@ export const Stages: StagesProp = {
   {
     main: MirrorRoom,
     mirror: Mirror,
+    paintingPuzzle: PaintingPuzzle,
   },
   1: 
   {
@@ -76,6 +79,14 @@ export const MirrorRoomSubscenes: SubsceneProp[] = [
     left: 450,
     shape: "polygon(62% 0, 79% 8%, 100% 19%, 100% 53%, 98% 80%, 92% 100%, 7% 100%, 0 91%, 4% 23%, 26% 9%)",
     next: "mirror",
+  },
+  {
+    name: "paintingPuzzle",
+    img: paintingPuzzleImg,
+    top: 91,
+    left: 100,
+    shape: "",
+    next: "paintingPuzzle"
   },
 ]
 

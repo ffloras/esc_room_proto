@@ -1,4 +1,4 @@
-import React, { createContext, useState, type ReactNode, type FC } from "react";
+import { createContext, useState, type ReactNode, type FC } from "react";
 
 type stageProvider = {
   current: number;

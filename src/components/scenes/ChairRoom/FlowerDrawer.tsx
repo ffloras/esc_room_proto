@@ -27,10 +27,6 @@ type drawerStatesProp = {
   [key: string]: string;
 }
 
-type potionsProp = {
-  [key: string]: boolean;
-}
-
 type flowerColorProp = {
   wheel: string;
   color: number;

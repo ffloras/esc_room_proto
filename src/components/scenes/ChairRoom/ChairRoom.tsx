@@ -1,13 +1,9 @@
 import MainDirectionButton from "../../mainGame/MainDirectionButton"
-import { use } from "react";
-import { AllItemsContext } from "../../../contexts/AllItemsContext";
 import ChairMainImg from "../../../assets/img/scenes/chairRoom.png"
 import { ChairRoomSubscenes } from "../../../db/scenesDB";
-import BasicItem from "../../items/BasicItem";
 import BasicSubscene from "../../subscenes/BasicSubscene";
 
 const ChairRoom = () => {
-  let {items} = use(AllItemsContext);
 
   return (
     <div className="scene-container" style={{

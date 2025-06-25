@@ -1,6 +1,6 @@
 import "../../css/ceiling.css"
 import type React from "react"
-import { use, useEffect, useRef, useState } from "react"
+import { use, useRef, useState } from "react"
 //components
 import MainDirectionButton from "../mainGame/MainDirectionButton"
 import CeilingGear from "../subscenes/CeilingGear"

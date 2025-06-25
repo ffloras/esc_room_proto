@@ -24,12 +24,12 @@ const ansArray: (string | null)[][] =
     [bottomLeft, bottomCenter, bottomRight]
   ];
 
-const questArray: (string | null)[][] =
-  [
-    [center, centerLeft, bottomCenter],
-    [topCenter, centerRight, bottomRight],
-    [null, bottomLeft, topLeft]
-  ];
+// const questArray: (string | null)[][] =
+//   [
+//     [center, centerLeft, bottomCenter],
+//     [topCenter, centerRight, bottomRight],
+//     [null, bottomLeft, topLeft]
+//   ];
 
   const testArray: (string | null)[][] =
   [

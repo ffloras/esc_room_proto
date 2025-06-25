@@ -1,5 +1,5 @@
 import "../../css/sidebar.css"
-import { useEffect, useState, use } from "react"
+import { useEffect, use } from "react"
 import { ItemsContext, type CurrentItemProp, } from "../../contexts/ItemsContext";
 import SidebarScrollButton from "./SidebarScrollButton";
 import { ItemsContainer } from "../../db/itemsDB";

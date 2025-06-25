@@ -85,9 +85,7 @@ const StarBox = () => {
 
   return (
     <div className='scene-container'>
-      <div className="starBoxImg">
-        <img src={starBoxImg} alt="starBox"/>
-      </div>
+      <img src={starBoxImg} alt="starBox" className="starBoxImg"/>
       <div className="starBox-container">
         {puzzleArray.map((row, i) => (
           <div className="starBox-row" key={i}>

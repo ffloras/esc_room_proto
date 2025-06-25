@@ -100,7 +100,7 @@ const Ceiling = () => {
   const {puzzleUnlocked, setPuzzleUnlocked} = use(PuzzleContext);
   const {activeItem, setActiveItem} = use(ActiveItemContext);
   const {removeSidebarItem} = use(ItemsContext);
-  const [load, setLoad] = useState<boolean>(true);
+  //const [load, setLoad] = useState<boolean>(true);
 
   const gears = ["topLeft", "topCenter", "centerLeft", "center", "centerRight", "bottomLeft", "bottomCenter", "bottomRight"];
 

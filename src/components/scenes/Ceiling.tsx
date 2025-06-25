@@ -1,6 +1,6 @@
 import "../../css/ceiling.css"
 import type React from "react"
-import { use, useRef, useState } from "react"
+import { use, useRef, useState, useEffect } from "react"
 //components
 import MainDirectionButton from "../mainGame/MainDirectionButton"
 import CeilingGear from "../subscenes/CeilingGear"
@@ -25,6 +25,7 @@ const Ceiling = () => {
   const {puzzleUnlocked, setPuzzleUnlocked} = use(PuzzleContext);
   const {activeItem, setActiveItem} = use(ActiveItemContext);
   const {removeSidebarItem} = use(ItemsContext);
+  const [load, setLoad] = useState<boolean>(true);
 
   const gears = ["topLeft", "topCenter", "centerLeft", "center", "centerRight", "bottomLeft", "bottomCenter", "bottomRight"];
 
@@ -74,12 +75,26 @@ const Ceiling = () => {
     }
   }
 
-  // useEffect(() => {
-  //   console.log(movement)
-  // }, [movement])
+  useEffect(() => {
+    const loadTimer = setTimeout(() => {
+      setLoad(false);
+    }, 50);
+
+    return () => clearTimeout(loadTimer);
+  }, [])
 
   return (
     <div className="scene-container" style={{ backgroundImage: `url(${ceilingImg})` }} ref={sliderRef}>
+      <div style={{
+        position: "absolute",
+        height: '448px',
+        width: '698px',
+        top: '0px',
+        left: '0px',
+        backgroundColor: 'white',
+        zIndex: "100",
+        display: load ? "block" : "none",
+      }}></div>
       <div className="ceiling-gears">
         <img src={ceilingGearsImg} alt="ceiling gears" />
         <div className="gear-slot" 

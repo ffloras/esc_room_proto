@@ -10,6 +10,8 @@ import BasicItem from '../../items/BasicItem'
 const PaintingPuzzle = () => {
   const [count, setCount] = useState([0, 0, 0, 0, 0]);
   const{puzzleUnlocked, setPuzzleUnlocked} = use(PuzzleContext);
+  const [openImgLoaded, setOpenImgLoaded] = useState<boolean>(false);
+
   const maxSymbolCount = 7;
   const symbols = [];
   const ans = [1,2,3,4,5];
@@ -33,9 +35,16 @@ const PaintingPuzzle = () => {
 
   return (
     <div className='scene-container'>
-      <img src={puzzleUnlocked.paintingBox ? paintingPuzzleOpenImg : paintingPuzzleImg} alt="painting puzzle box" className='painting-box'/>
+      <img src={puzzleUnlocked.paintingBox ? paintingPuzzleOpenImg : paintingPuzzleImg} 
+        alt="painting puzzle box" 
+        className='painting-box'
+        onLoad={e => {
+          if ((e.target as HTMLImageElement).src.includes('paintingPuzzleOpenCloseup.png')) {
+            setOpenImgLoaded(true);
+          }
+        }}/>
       {!puzzleUnlocked.paintingBox && symbols}
-      {puzzleUnlocked.paintingBox && <BasicItem name='paintingKey'/>}
+      {puzzleUnlocked.paintingBox && openImgLoaded && <BasicItem name='paintingKey'/>}
       
       <MainDirectionButton direction='down'/>
     </div>

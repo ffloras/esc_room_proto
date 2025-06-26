@@ -39,7 +39,7 @@ const PaintingPuzzle = () => {
         alt="painting puzzle box" 
         className='painting-box'
         onLoad={e => {
-          if ((e.target as HTMLImageElement).src.includes('paintingPuzzleOpenCloseup.png')) {
+          if ((e.target as HTMLImageElement).src.includes('paintingPuzzleOpenCloseup')) {
             setOpenImgLoaded(true);
           }
         }}/>

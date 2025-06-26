@@ -6,6 +6,7 @@ import Counter from '../../subscenes/Counter'
 import { useState, use, useEffect } from 'react'
 import { PuzzleContext } from '../../../contexts/PuzzleContext'
 import BasicItem from '../../items/BasicItem'
+import LoadingScreen from '../../mainGame/LoadingScreen'
 
 const PaintingPuzzle = () => {
   const [count, setCount] = useState([0, 0, 0, 0, 0]);
@@ -35,6 +36,7 @@ const PaintingPuzzle = () => {
 
   return (
     <div className='scene-container'>
+      <LoadingScreen/>
       <img src={puzzleUnlocked.paintingBox ? paintingPuzzleOpenImg : paintingPuzzleImg} 
         alt="painting puzzle box" 
         className='painting-box'

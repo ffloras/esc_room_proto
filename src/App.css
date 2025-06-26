@@ -14,6 +14,22 @@
   align-items: center;
 }
 
+@keyframes fadeOut {
+  0% {background-color: rgba(255, 255, 255, 1);}
+  50% {background-color: rgba(255, 255, 255, 1);}
+  100% {background-color: rgba(255, 255, 255, 0);}
+}
+
+.loading-screen {
+  position: absolute;
+  height: 448px;
+  width: 698px;
+  top: 0px;
+  left: 0px;
+  z-index: 20;
+  animation: fadeOut 400ms;
+}
+
 /* side display */
 .side-display {
   border: 1px solid black;

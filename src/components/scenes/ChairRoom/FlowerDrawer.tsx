@@ -20,6 +20,7 @@ import agPotionUnselectedImg from '../../../assets/img/items/flowerAgUnselected.
 import flowerClosedImg from '../../../assets/img/subscenes/chairRoom/flowerClosed.png'
 import flowerOpenImg from '../../../assets/img/subscenes/chairRoom/flowerOpen.png'
 import BasicItem from '../../items/BasicItem'
+import LoadingScreen from '../../mainGame/LoadingScreen'
 
 
 
@@ -129,6 +130,7 @@ const FlowerDrawer = () => {
 
   return (
     <div className='scene-container'>
+      <LoadingScreen/>
       <div className="items-area" onClick={() => unlockPotion(activeItem)}></div>
       <div className="flower">
         <div className="flower-color" style={{backgroundColor: flowerColors[flowerColor.wheel][flowerColor.color]}}></div>

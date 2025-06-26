@@ -2,6 +2,7 @@ import MainDirectionButton from "../../mainGame/MainDirectionButton"
 import ChairMainImg from "../../../assets/img/scenes/chairRoom.png"
 import { ChairRoomSubscenes } from "../../../db/scenesDB";
 import BasicSubscene from "../../subscenes/BasicSubscene";
+import LoadingScreen from "../../mainGame/LoadingScreen";
 
 const ChairRoom = () => {
 
@@ -9,7 +10,7 @@ const ChairRoom = () => {
     <div className="scene-container" style={{
       backgroundImage: `url(${ChairMainImg})`
     }}>
-      ChairRoom
+      <LoadingScreen/>
 
       {ChairRoomSubscenes.map((subscene, index) => (
         <BasicSubscene {...subscene} prevScene="main" key={index}/>

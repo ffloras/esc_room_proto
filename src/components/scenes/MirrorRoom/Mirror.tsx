@@ -3,6 +3,7 @@ import MainDirectionButton from '../../mainGame/MainDirectionButton'
 import mirrorCloseup from '../../../assets/img/subscenes/mainRoom/mirrorCloseup.png'
 import { useState } from 'react'
 import "../../../css/mirrorRoom.css"
+import LoadingScreen from '../../mainGame/LoadingScreen'
 
 const Mirror = () => {
   const [textActive, setTextActive] = useState({
@@ -20,6 +21,7 @@ const Mirror = () => {
 
   return (
     <div className='scene-container'style={{backgroundImage: `url(${mirrorCloseup})`}}>
+      <LoadingScreen/>
       {textActive.player && 
         <>
           <span className='text-box'style={{top: '160px', left: '260px'}}>Who am I?</span>

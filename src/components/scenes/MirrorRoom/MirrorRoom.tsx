@@ -5,6 +5,7 @@ import BasicSubscene from "../../subscenes/BasicSubscene";
 import MainDirectionButton from "../../mainGame/MainDirectionButton";
 import { MirrorRoomSubscenes} from "../../../db/scenesDB";
 import "../../../css/mirrorRoom.css";
+import LoadingScreen from "../../mainGame/LoadingScreen";
 
 
 const MirrorRoom = () => {
@@ -14,7 +15,7 @@ const MirrorRoom = () => {
       backgroundImage: `url(${mirrorMainImg})`,
       }}
     >
-      MirrorRoom
+      <LoadingScreen/>
       <BasicItem name="agPotion"/>
       <BasicItem name="coPotion"/>
 

@@ -16,6 +16,7 @@ import starBoxDrawerImg from '../../../assets/img/subscenes/clockRoom/starBoxPie
 //contexts
 import { PuzzleContext } from "../../../contexts/PuzzleContext";
 import BasicItem from "../../items/BasicItem";
+import LoadingScreen from "../../mainGame/LoadingScreen";
 
 const ansArray: (string | null)[][] =
   [
@@ -85,6 +86,7 @@ const StarBox = () => {
 
   return (
     <div className='scene-container'>
+      <LoadingScreen/>
       <img src={starBoxImg} alt="starBox" className="starBoxImg"/>
       <div className="starBox-container">
         {puzzleArray.map((row, i) => (

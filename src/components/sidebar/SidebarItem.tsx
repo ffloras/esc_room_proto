@@ -21,7 +21,12 @@ const SidebarItem = ({name}: {name: string | null}) => {
       style={{ backgroundColor: activeItem && activeItem == name ? "gray" : "white"}}
       onClick={selectItem}
     >
-      {name? <><img src={items[name].img} alt={name} width='auto' height='50px'/><div>{items[name].name}</div></> : <></> }
+      {name? <><img src={items[name].img} alt={name}
+        style={{
+          maxWidth: '50px',
+          maxHeight: '50px',
+        }}
+      /><div>{items[name].name}</div></> : <></> }
     </div>
   )
 }

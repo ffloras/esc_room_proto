@@ -3,6 +3,7 @@ import flowerPotionInDrawerImg from "../assets/img/subscenes/chairRoom/flowerDra
 import agPotionImg from "../assets/img/items/flowerAgUnselected.png"
 import coPotionImg from "../assets/img/items/flowerCoUnselected.png"
 import fireflyImg from "../assets/img/items/firefly.png"
+import paintingKeyImg from "../assets/img/items/key.png"
 
 export const ItemsContainer = {
   height: 70,
@@ -61,5 +62,14 @@ export const Items: ItemsProp = {
     left: 45,
     shape: "circle",
     isObtained: false,
+  },
+  paintingKey: {
+    name: "key",
+    img: paintingKeyImg,
+    top: 200,
+    left: 290,
+    shape: "",
+    isObtained: false,
   }
+
 }

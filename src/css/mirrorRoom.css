@@ -19,3 +19,38 @@
   left: 280px;
   clip-path: polygon(43% 0, 53% 3%, 74% 32%, 84% 58%, 80% 100%, 34% 100%, 35% 36%, 43% 20%, 36% 7%);
 }
+
+.painting-box {
+  position: absolute;
+  top: 103px;
+  left: 140px;
+}
+
+.painting-symbol {
+  background-size: auto;
+  background-repeat: no-repeat;
+  width: 43px;
+  height: 58px;
+  position: absolute;
+  top: 193px;
+}
+
+.symbol-0 {
+  left: 180px;
+}
+
+.symbol-1 {
+  left: 254px;
+}
+
+.symbol-2 {
+  left: 328px;
+}
+
+.symbol-3 {
+  left: 402px;
+}
+
+.symbol-4 {
+  left: 476px;
+}

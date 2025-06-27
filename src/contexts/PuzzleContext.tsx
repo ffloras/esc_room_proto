@@ -25,9 +25,9 @@ export const PuzzleProvider: FC<PuzzleProviderProp> = ({children}) => {
     coPotion: false,
     agPotion: false,
     niPotion: false,
-    flower: true,
+    flower: false,
     paintingBox: false,
-    wardrobe: true,
+    wardrobe: false,
     shard1: false,
   }
 

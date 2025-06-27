@@ -16,6 +16,7 @@ const Wardrobe = () => {
   const [lightY, setLightY] = useState<number | null>(null);
   const [wardrobeOpen, setWardrobeOpen] = useState<boolean>(false);
   const [startCompletion, setStartCompletion] = useState<boolean>(false);
+  const [imgLoaded, setImgLoaded] = useState<boolean>(false);
 
   const { puzzleUnlocked, setPuzzleUnlocked } = use(PuzzleContext);
   const { activeItem, setActiveItem } = use(ActiveItemContext);
@@ -53,8 +54,16 @@ const Wardrobe = () => {
   }
 
   const obtainItem = () => {
-    setPuzzleUnlocked((prev) => ({...prev, shard1: true}))
+    setPuzzleUnlocked((prev) => ({ ...prev, shard1: true }))
     setStartCompletion(true);
+  }
+
+
+  const loadComplete = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    if ((e.target as HTMLImageElement).src.includes('wardrobeLrgOpen')) {
+      console.log("load complete")
+      setImgLoaded(true);
+    }
   }
 
   useEffect(() => {
@@ -81,36 +90,34 @@ const Wardrobe = () => {
       }
       {wardrobeOpen &&
         <>
-          <img src={wardrobeOpenImg} alt="wardrobe open" className="wardrobe" />
-          <div className="wardrobe-container"
-            onMouseEnter={e => useLight(e)}
-          >
-          <div
-            className="black-screen"
-            style={{
-              backgroundImage: `url(${wardrobeInsideImg})`,
-              maskImage: activeItem == 'firefly' ? `url(${lightImg})` : '',
-              WebkitMaskImage: activeItem == 'firefly' ? `url(${lightImg})` : '',
-              maskPosition: activeItem == 'firefly' ? `${lightX}px ${lightY}px` : '',
-              display: (puzzleUnlocked.shard1 || (activeItem == "firefly" && lightX != null && lightY != null)) ? "block" : "none",
-              opacity: startCompletion ? '0' : '1',
-            }}
-          ></div>
-          <div className="wardrobe-item"
-            style={{
-              display: activeItem == "firefly" ? "block" : "none"
-            }}
-            onClick={obtainItem}
-          ></div>
-
-          </div>
+          <img src={wardrobeOpenImg} alt="wardrobe open" className="wardrobe"
+            onLoad={e => loadComplete(e)}
+          />
+          {imgLoaded &&
+            <div className="wardrobe-container"
+              onMouseEnter={e => useLight(e)}
+            >
+              <div
+                className="black-screen"
+                style={{
+                  backgroundImage: `url(${wardrobeInsideImg})`,
+                  maskImage: activeItem == 'firefly' ? `url(${lightImg})` : '',
+                  WebkitMaskImage: activeItem == 'firefly' ? `url(${lightImg})` : '',
+                  maskPosition: activeItem == 'firefly' ? `${lightX}px ${lightY}px` : '',
+                  display: (puzzleUnlocked.shard1 || (activeItem == "firefly" && lightX != null)) ? "block" : "none",
+                  opacity: startCompletion ? '0' : '1',
+                }}
+              ></div>
+              <div className="wardrobe-item"
+                style={{
+                  display: activeItem == "firefly" ? "block" : "none"
+                }}
+                onClick={obtainItem}
+              ></div>
+            </div>
+          }
         </>
-
-
       }
-
-
-
       <MainDirectionButton direction="down" />
     </div>
 

@@ -61,7 +61,6 @@ const Wardrobe = () => {
 
   const loadComplete = (e: React.SyntheticEvent<HTMLImageElement>) => {
     if ((e.target as HTMLImageElement).src.includes('wardrobeLrgOpen')) {
-      console.log("load complete")
       setImgLoaded(true);
     }
   }
@@ -82,13 +81,7 @@ const Wardrobe = () => {
     <div className="scene-container">
       <LoadingScreen />
 
-      {!wardrobeOpen &&
-        <img src={puzzleUnlocked.wardrobe ? wardrobeUnlockedImg : wardrobeLockedImg} alt="wardrobe closed"
-          className="wardrobe"
-          onClick={openWardrobe}
-        />
-      }
-      {wardrobeOpen &&
+      {wardrobeOpen ?
         <>
           <img src={wardrobeOpenImg} alt="wardrobe open" className="wardrobe"
             onLoad={e => loadComplete(e)}
@@ -116,7 +109,11 @@ const Wardrobe = () => {
               ></div>
             </div>
           }
-        </>
+        </> :
+        <img src={puzzleUnlocked.wardrobe ? wardrobeUnlockedImg : wardrobeLockedImg} alt="wardrobe closed"
+          className="wardrobe"
+          onClick={openWardrobe}
+        />
       }
       <MainDirectionButton direction="down" />
     </div>

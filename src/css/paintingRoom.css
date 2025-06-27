@@ -1,0 +1,32 @@
+.wardrobe {
+  position: absolute;
+  left: 170px;
+}
+
+.wardrobe-container {
+  background-color: black;
+  position: absolute;
+  width: 219px;
+  height: 278px;
+  top: 74px;
+  left: 241px;
+}
+
+.black-screen {
+  width: 219x;
+  height: 278px;
+  background-size: cover;
+  mask-repeat: no-repeat;
+  opacity: 1;
+  transition: opacity 1s;
+}
+
+.wardrobe-item {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  border: 1px solid red;
+  left: 100px;
+  top: 100px;
+}
+

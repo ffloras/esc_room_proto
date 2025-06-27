@@ -3,7 +3,7 @@ import type { ComponentType } from "react";
 
 //Stages
 import MirrorRoom from "../components/scenes/MirrorRoom/MirrorRoom";
-import CandleRoom from "../components/scenes/CandleRoom";
+import PaintingRoom from "../components/scenes/PaintingRoom/PaintingRoom";
 import ClockRoom from "../components/scenes/ClockRoom/ClockRoom";
 import ChairRoom from "../components/scenes/ChairRoom/ChairRoom";
 import StartMenu from "../components/scenes/StartMenu";
@@ -22,6 +22,10 @@ import StarBox from "../components/scenes/ClockRoom/StarBox";
 //Chair Room subscenes
 import flowerDrawerImg from "../assets/img/subscenes/chairRoom/flowerDrawer.png"
 import FlowerDrawer from "../components/scenes/ChairRoom/FlowerDrawer";
+
+//Painting Room subscenes
+import wardrobeImg from "../assets/img/subscenes/paintingRoom/wardrobeLocked.png"
+import Wardrobe from "../components/scenes/PaintingRoom/Wardrobe";
 
 type StagesProp = {
   [key: number]: ScenesProp,
@@ -50,7 +54,8 @@ export const Stages: StagesProp = {
   },
   3: 
   {
-    main: CandleRoom
+    main: PaintingRoom,
+    wardrobe: Wardrobe
   },
   4: 
   {
@@ -109,5 +114,16 @@ export const ChairRoomSubscenes: SubsceneProp[] = [
     left: 120,
     shape: "",
     next: "flowerDrawer",
+  },
+]
+
+export const PaintingRoomSubscenes: SubsceneProp[] = [
+  {
+    name: "wardrobe",
+    img: wardrobeImg,
+    top: 125,
+    left: 500,
+    shape: "",
+    next: 'wardrobe'
   },
 ]

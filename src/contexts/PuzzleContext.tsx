@@ -25,8 +25,10 @@ export const PuzzleProvider: FC<PuzzleProviderProp> = ({children}) => {
     coPotion: false,
     agPotion: false,
     niPotion: false,
-    flower: false,
+    flower: true,
     paintingBox: false,
+    wardrobe: true,
+    shard1: false,
   }
 
   const [puzzleUnlocked, setPuzzleUnlocked] = useState<puzzleUnlockedProp>(initialPuzzleStatus);

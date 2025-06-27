@@ -69,8 +69,9 @@ const FlowerDrawer = () => {
 
   const [drawerState, setDrawerState] = useState<string>("closed");
   const [paperVisible, setPaperVisible] = useState<boolean>(false);
-  const [potionsSelected, setPotionsSelected] = useState<string>("")
-  const [flowerColor, setFlowerColor] = useState<flowerColorProp>({wheel: 'co', color: 1})
+  const [potionsSelected, setPotionsSelected] = useState<string>("");
+  const [flowerColor, setFlowerColor] = useState<flowerColorProp>({wheel: 'co', color: 1});
+  const [imgLoaded, setImgLoaded] = useState<boolean>(false);
 
   const {activeItem, setActiveItem} = use(ActiveItemContext);
   const {puzzleUnlocked, setPuzzleUnlocked} = use(PuzzleContext)
@@ -138,7 +139,12 @@ const FlowerDrawer = () => {
         {puzzleUnlocked.flower && <BasicItem name='firefly'/>}
       </div>
 
-      <img src={drawerStates[drawerState]} className="flower-drawer" alt="drawer with flower puzzle" />
+      <img src={drawerStates[drawerState]} className="flower-drawer" alt="drawer with flower puzzle"
+        onLoad={e => {
+          if ((e.target as HTMLImageElement).src.includes('flowerDrawerOpenBottom')) {
+            setImgLoaded(true);
+          }
+        }} />
 
       {drawerState == "closed" && 
       <>
@@ -155,7 +161,7 @@ const FlowerDrawer = () => {
       <>
         <div className="close-bottom-drawer" onClick={() => useDrawer("closed")}></div>
         <div className="open-top-drawer" onClick={() => useDrawer("topOpened")}></div>
-        {!puzzleUnlocked.niPotion && 
+        {!puzzleUnlocked.niPotion && imgLoaded &&
           <img src={flowerPotionInDrawer} alt="Ni potion in bottom drawer" 
           className='potion-in-drawer' onClick={() => unlockPotion("niPotion")}/>
         }

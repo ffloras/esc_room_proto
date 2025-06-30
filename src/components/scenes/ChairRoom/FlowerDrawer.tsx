@@ -129,7 +129,7 @@ const FlowerDrawer = () => {
       if ((e.target as HTMLImageElement).src.includes('flowerDrawerOpenBottom')) {
         setImgLoaded((prev) => ({...prev, bottomDrawer: true}));
       }
-      if ((e.target as HTMLImageElement).src.includes('flowerDrawerOpenBottom')) {
+      if ((e.target as HTMLImageElement).src.includes('flowerOpen')) {
         setImgLoaded((prev) => ({...prev, flower: true}));
       }
     }

@@ -1,6 +1,8 @@
 import { useState, use, useEffect } from 'react'
 import "../../../css/chairRoom.css"
 import MainDirectionButton from '../../mainGame/MainDirectionButton'
+import BasicItem from '../../items/BasicItem'
+import LoadingScreen from '../../mainGame/LoadingScreen'
 //contexts
 import { PuzzleContext } from '../../../contexts/PuzzleContext'
 import { ActiveItemContext } from '../../../contexts/ActiveItemContext'
@@ -19,8 +21,6 @@ import agPotionSelectedImg from '../../../assets/img/items/flowerAgSelected.png'
 import agPotionUnselectedImg from '../../../assets/img/items/flowerAgUnselected.png'
 import flowerClosedImg from '../../../assets/img/subscenes/chairRoom/flowerClosed.png'
 import flowerOpenImg from '../../../assets/img/subscenes/chairRoom/flowerOpen.png'
-import BasicItem from '../../items/BasicItem'
-import LoadingScreen from '../../mainGame/LoadingScreen'
 
 
 
@@ -37,6 +37,10 @@ type flowerColorsProp = {
   [key: string] : {
     [key: number] : string;
   }
+}
+
+type imgLoadedProp = {
+  [key: string] : boolean;
 }
 
 const flowerColors: flowerColorsProp = {
@@ -71,7 +75,7 @@ const FlowerDrawer = () => {
   const [paperVisible, setPaperVisible] = useState<boolean>(false);
   const [potionsSelected, setPotionsSelected] = useState<string>("");
   const [flowerColor, setFlowerColor] = useState<flowerColorProp>({wheel: 'co', color: 1});
-  const [imgLoaded, setImgLoaded] = useState<boolean>(false);
+  const [imgLoaded, setImgLoaded] = useState<imgLoadedProp>({bottomDrawer: false, flower: false});
 
   const {activeItem, setActiveItem} = use(ActiveItemContext);
   const {puzzleUnlocked, setPuzzleUnlocked} = use(PuzzleContext)
@@ -121,6 +125,15 @@ const FlowerDrawer = () => {
     }
   }
 
+  const loadComplete = (e: React.SyntheticEvent<HTMLImageElement>) => {
+      if ((e.target as HTMLImageElement).src.includes('flowerDrawerOpenBottom')) {
+        setImgLoaded((prev) => ({...prev, bottomDrawer: true}));
+      }
+      if ((e.target as HTMLImageElement).src.includes('flowerDrawerOpenBottom')) {
+        setImgLoaded((prev) => ({...prev, flower: true}));
+      }
+    }
+
   useEffect(() => {
     if (flowerColor.wheel == 'co' && flowerColor.color == 6) {
       setPotionsSelected("");
@@ -135,16 +148,12 @@ const FlowerDrawer = () => {
       <div className="items-area" onClick={() => unlockPotion(activeItem)}></div>
       <div className="flower">
         <div className="flower-color" style={{backgroundColor: flowerColors[flowerColor.wheel][flowerColor.color]}}></div>
-        <img src={puzzleUnlocked.flower ? flowerOpenImg : flowerClosedImg} alt="flower" onClick={changeColor}/>
-        {puzzleUnlocked.flower && <BasicItem name='firefly'/>}
+        <img src={puzzleUnlocked.flower ? flowerOpenImg : flowerClosedImg} alt="flower" onClick={changeColor} onLoad={(e) => loadComplete(e)}/>
+        {puzzleUnlocked.flower && imgLoaded.flower && <BasicItem name='firefly'/>}
       </div>
 
       <img src={drawerStates[drawerState]} className="flower-drawer" alt="drawer with flower puzzle"
-        onLoad={e => {
-          if ((e.target as HTMLImageElement).src.includes('flowerDrawerOpenBottom')) {
-            setImgLoaded(true);
-          }
-        }} />
+        onLoad={e => loadComplete(e)} />
 
       {drawerState == "closed" && 
       <>
@@ -161,7 +170,7 @@ const FlowerDrawer = () => {
       <>
         <div className="close-bottom-drawer" onClick={() => useDrawer("closed")}></div>
         <div className="open-top-drawer" onClick={() => useDrawer("topOpened")}></div>
-        {!puzzleUnlocked.niPotion && imgLoaded &&
+        {!puzzleUnlocked.niPotion && imgLoaded.bottomDrawer &&
           <img src={flowerPotionInDrawer} alt="Ni potion in bottom drawer" 
           className='potion-in-drawer' onClick={() => unlockPotion("niPotion")}/>
         }

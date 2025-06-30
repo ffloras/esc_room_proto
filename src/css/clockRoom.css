@@ -25,6 +25,132 @@
   position: absolute;
   left: 183px;
   transition: top 0.5s;
-
 }
+
+.clock {
+  position: absolute;
+  top: 20px;
+  left: 50px;
+}
+
+.clock-top-clickbox {
+  position: absolute;
+  top: 80px;
+  left: 70px;
+  width: 100px;
+  height: 100px;
+ }
+
+ .clock-bottom-clickbox {
+  position: absolute;
+  top: 185px;
+  left: 70px;
+  width: 100px;
+  height: 230px;
+ }
+
+ .clock-star-puzzle {
+  position: absolute;
+  left: 205px;
+ }
+
+ .sliding-door-background {
+  position: absolute;
+  width: 225px;
+  height: 70px;
+  background-color:rgb(40, 40, 40);
+  left: 230px;
+  bottom: 25px;
+  z-index: -10;
+ }
+
+  .sliding-door {
+  position: absolute;
+  width: 220px;
+  height: 55px;
+  background-color:rgb(255, 255, 255);
+  left: 230px;
+  transition: top 1s;
+  border: 3px solid black;
+ }
+
+ .clock-counter {
+  width: 26px;
+  height: 30px;
+ }
+
+ .bidirectional-counter {
+  position: absolute;
+  z-index: 10;
+  border: 2px solid black;
+  background-color: white;
+  border-radius: 3px;
+ }
+
+ .bidirectional-counter img {
+  height: 25%;
+ }
+
+ .bi-counter-screen {
+  width: 100%;
+  height: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  font-size: 14px;
+  cursor: default;
+ }
+
+ .clock-pointer-container {
+  position: absolute;
+  left: 335px;
+  top: 182px;
+  width: 14px;
+  height: 81px;
+  z-index: 20;
+  /* transition: transform 2s; */
+  /* border: 1px solid black; */
+ }
+
+ .clock-pointer {
+  position: absolute;
+ }
+
+ .clock-pointer-clickbox {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  /* border: 1px solid red; */
+ }
+
+ .clock-ans-slot {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 15px;
+  border: 2px solid black;
+ }
+
+ .clock-reset-button {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid black;
+  border-radius: 50%;
+  left: 185px;
+  top: 15px;
+  background-size: cover;
+ }
+
+ .clock-reset-button-clickbox {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  left: 418px;
+  top: 373px;
+  z-index: 10;
+ }
+
 

@@ -16,7 +16,7 @@ const BasicItem: FC<BasicItemProp> = ({name}) => {
     setItemObtained(name, true);
   }
 
-  const {img, top, left, shape} = items[name];
+  const {img, top, left, shape, isObtained} = items[name];
 
   return (
     <>
@@ -27,7 +27,7 @@ const BasicItem: FC<BasicItemProp> = ({name}) => {
           position: "absolute",
           top: `${top}px`,
           left: `${left}px`,
-          display: items[name].isObtained ? "none" : "inline",
+          display: isObtained ? "none" : "inline",
         }}
         onClick={obtainItem}
       />

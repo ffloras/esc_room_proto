@@ -81,7 +81,13 @@ const Wardrobe = () => {
     <div className="scene-container">
       <LoadingScreen />
 
-      {wardrobeOpen ?
+      {!wardrobeOpen &&
+        <img src={puzzleUnlocked.wardrobe ? wardrobeUnlockedImg : wardrobeLockedImg} alt="wardrobe closed"
+          className="wardrobe"
+          onClick={openWardrobe}
+        />
+      }
+      {wardrobeOpen &&
         <>
           <img src={wardrobeOpenImg} alt="wardrobe open" className="wardrobe"
             onLoad={e => loadComplete(e)}
@@ -109,11 +115,7 @@ const Wardrobe = () => {
               ></div>
             </div>
           }
-        </> :
-        <img src={puzzleUnlocked.wardrobe ? wardrobeUnlockedImg : wardrobeLockedImg} alt="wardrobe closed"
-          className="wardrobe"
-          onClick={openWardrobe}
-        />
+        </>
       }
       <MainDirectionButton direction="down" />
     </div>

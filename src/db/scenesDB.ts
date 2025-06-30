@@ -26,6 +26,8 @@ import FlowerDrawer from "../components/scenes/ChairRoom/FlowerDrawer";
 //Painting Room subscenes
 import wardrobeImg from "../assets/img/subscenes/paintingRoom/wardrobeLocked.png"
 import Wardrobe from "../components/scenes/PaintingRoom/Wardrobe";
+import ClockBottom from "../components/scenes/ClockRoom/ClockBottom";
+import ClockTop from "../components/scenes/ClockRoom/ClockTop";
 
 type StagesProp = {
   [key: number]: ScenesProp,
@@ -46,6 +48,8 @@ export const Stages: StagesProp = {
   {
     main: ClockRoom,
     starBox: StarBox,
+    clockBottom: ClockBottom,
+    clockTop: ClockTop,
   },
   2: 
   {

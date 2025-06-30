@@ -55,3 +55,8 @@
   background-color: white;
   padding: 0 5px 0 5px;
 }
+
+.not-draggable {
+  user-drag: none;
+  -webkit-user-drag: none;
+}

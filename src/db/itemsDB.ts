@@ -4,6 +4,7 @@ import agPotionImg from "../assets/img/items/flowerAgUnselected.png"
 import coPotionImg from "../assets/img/items/flowerCoUnselected.png"
 import fireflyImg from "../assets/img/items/firefly.png"
 import paintingKeyImg from "../assets/img/items/key.png"
+import mirrorPiece1 from "../assets/img/items/mirrorPiece1.png"
 
 export const ItemsContainer = {
   height: 70,
@@ -23,6 +24,7 @@ export type ItemProp = {
   left?: number;
   shape?: string;
   scale?: number;
+  zindex?: string;
 }
 
 export const Items: ItemsProp = {
@@ -70,6 +72,15 @@ export const Items: ItemsProp = {
     left: 290,
     shape: "",
     isObtained: false,
+  },
+  mirrorPiece1: {
+    name: "mirror piece",
+    img: mirrorPiece1,
+    top: 359,
+    left: 300,
+    shape: "",
+    isObtained: false,
+    zindex: '0',
   }
 
 }

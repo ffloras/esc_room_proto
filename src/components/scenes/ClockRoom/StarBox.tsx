@@ -1,48 +1,40 @@
-import starBoxImg from "../../../assets/img/subscenes/clockRoom/starBoxCloseUp.png"
-import MainDirectionButton from '../../mainGame/MainDirectionButton'
 import React, { useEffect, useState, use } from "react";
-import '../../../css/clockRoom.css'
-//puzzle pieces
-import topLeft from '../../../assets/img/subscenes/clockRoom/starBoxPieces/topLeft.png'
-import topCenter from '../../../assets/img/subscenes/clockRoom/starBoxPieces/topCenter.png'
-import centerLeft from '../../../assets/img/subscenes/clockRoom/starBoxPieces/centerLeft.png'
-import center from '../../../assets/img/subscenes/clockRoom/starBoxPieces/center.png'
-import centerRight from '../../../assets/img/subscenes/clockRoom/starBoxPieces/centerRight.png'
-import bottomLeft from '../../../assets/img/subscenes/clockRoom/starBoxPieces/bottomLeft.png'
-import bottomCenter from '../../../assets/img/subscenes/clockRoom/starBoxPieces/bottomCenter.png'
-import bottomRight from '../../../assets/img/subscenes/clockRoom/starBoxPieces/bottomRight.png'
-//drawer components
-import starBoxDrawerImg from '../../../assets/img/subscenes/clockRoom/starBoxPieces/starBoxDrawer.png'
-//contexts
 import { PuzzleContext } from "../../../contexts/PuzzleContext";
+import '../../../css/clockRoom.css'
+//images
+import starBoxSpritesheet from '../../../assets/img/subscenes/clockRoom/starBoxSpritesheet.png'
+import starBoxImg from "../../../assets/img/subscenes/clockRoom/starBoxCloseUp.png"
+import starBoxDrawerImg from '../../../assets/img/subscenes/clockRoom/starBoxPieces/starBoxDrawer.png'
+//components
 import BasicItem from "../../items/BasicItem";
 import LoadingScreen from "../../mainGame/LoadingScreen";
+import MainDirectionButton from '../../mainGame/MainDirectionButton'
 
-const ansArray: (string | null)[][] =
+const ansArray: (number | null)[][] =
   [
-    [topLeft, topCenter, null],
-    [centerLeft, center, centerRight],
-    [bottomLeft, bottomCenter, bottomRight]
+    [0, 1, null],
+    [2, 3, 4],
+    [5, 6, 7]
   ];
 
-// const questArray: (string | null)[][] =
+// const questArray: (number | null)[][] =
 //   [
-//     [center, centerLeft, bottomCenter],
-//     [topCenter, centerRight, bottomRight],
-//     [null, bottomLeft, topLeft]
+//     [3, 2, 6],
+//     [1, 4, 7],
+//     [null, 5, 0]
 //   ];
 
-  const testArray: (string | null)[][] =
+  const testArray: (number | null)[][] =
   [
-    [topLeft, center, topCenter],
-    [centerLeft, centerRight, null],
-    [bottomLeft, bottomCenter, bottomRight]
+    [0, 3, 1],
+    [2, 4, null],
+    [5, 6, 7]
   ];
 
 const StarBox = () => {
   const { puzzleUnlocked, setPuzzleUnlocked } = use(PuzzleContext);
 
-  const [puzzleArray, setPuzzleArray] = useState<(string | null)[][]>(puzzleUnlocked.starBox ? ansArray : testArray)
+  const [puzzleArray, setPuzzleArray] = useState<(number | null)[][]>(puzzleUnlocked.starBox ? ansArray : testArray)
 
   const swapPieces = (e: React.MouseEvent<HTMLDivElement>) => {
     if (puzzleUnlocked.starBox) return;
@@ -50,7 +42,7 @@ const StarBox = () => {
     const [i, j] = e.currentTarget.id.split(" ").map((index) => (+index));
     const maxIndex = puzzleArray.length - 1;
 
-    if (!puzzleArray[i][j]) return;
+    if (puzzleArray[i][j] === null) return;
 
     let current = puzzleArray[i][j];
     let top = puzzleArray[Math.max(0, i - 1)][j];
@@ -59,13 +51,13 @@ const StarBox = () => {
     let right = puzzleArray[i][Math.min(maxIndex, j + 1)];
     const updatedPuzzle = puzzleArray.map((row) => [...row]);
 
-    if (!top) {
+    if (top === null) {
       updatedPuzzle[i - 1][j] = current;
-    } else if (!bottom) {
+    } else if (bottom === null) {
       updatedPuzzle[i + 1][j] = current;
-    } else if (!left) {
+    } else if (left === null) {
       updatedPuzzle[i][j - 1] = current;
-    } else if (!right) {
+    } else if (right === null) {
       updatedPuzzle[i][j + 1] = current;
     } else {
       return;
@@ -74,6 +66,7 @@ const StarBox = () => {
     setPuzzleArray(updatedPuzzle);
   }
 
+  //checks puzzle completion
   useEffect(() => {
     if (puzzleUnlocked.starBox) return;
     for (let i = 0; i < 3; i++) {
@@ -95,7 +88,10 @@ const StarBox = () => {
               <div id={`${i} ${j}`}
                 className="starBox-piece"
                 key={piece}
-                style={{ backgroundImage: piece ? `url(${piece})` : 'none' }}
+                style={{ 
+                  backgroundImage: piece != null ? `url(${starBoxSpritesheet})` : 'none',
+                  backgroundPosition: piece != null ? `-${piece * 100}px 0px` : '',
+                }}
                 onClick={(e) => swapPieces(e)}
               >
               </div>

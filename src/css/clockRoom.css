@@ -17,7 +17,7 @@
 
 .starBox-piece {
   width: 100px;
-  height: 63px;
+  height: 64px;
   z-index: 30;
 }
 
@@ -151,6 +151,37 @@
   left: 418px;
   top: 373px;
   z-index: 10;
+ }
+
+ .clock-top {
+  position: absolute;
+  left: 163px;
+ }
+
+ .clock-hand {
+  position: absolute;
+  transform-origin: 50% 100%;
+ }
+
+ .hour-hand {
+  left: 333px;
+  top: 214px;
+ }
+
+ .minute-hand {
+  left: 334px;
+  top: 205px;
+ }
+
+ .clock-hand-origin {
+  position: absolute;
+  top: 265px;
+  left: 337px;
+  border: 1px solid white;
+  background-color: white;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
  }
 
 

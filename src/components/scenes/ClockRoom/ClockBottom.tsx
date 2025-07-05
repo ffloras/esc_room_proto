@@ -14,7 +14,7 @@ const ClockBottom = () => {
   const [rotation, setRotation] = useState<number>(0);
   const [pointerReturning, setpointerReturning] = useState<boolean>(false);
 
-  const ansKey = [1, 1, 1, 1, 1, 1, 1, 1];
+  const ansKey = [7, 2, 8, 3, 5, 11, 6, 10];
   const ansInitial = [null, null, null, null, null, null, null, null];
   const [ans, setAns] = useState<(number | null)[]>(ansInitial);
 
@@ -144,7 +144,7 @@ const ClockBottom = () => {
         ></div>
       </div>
 
-      <BasicItem name='mirrorPiece1'/>
+      <BasicItem name='mirrorFragment1'/>
 
       <MainDirectionButton direction='down'/>
     </div>

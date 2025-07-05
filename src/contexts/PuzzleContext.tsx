@@ -29,7 +29,10 @@ export const PuzzleProvider: FC<PuzzleProviderProp> = ({children}) => {
     paintingBox: false,
     wardrobe: true,
     clockBottom: false,
-    mirrorPiece1: false,
+    windowBoard: false,
+    mirrorFragment1: false,
+    mirrorFragment2: false,
+    mirrorFragment3: false,
   }
 
   const [puzzleUnlocked, setPuzzleUnlocked] = useState<puzzleUnlockedProp>(initialPuzzleStatus);

@@ -27,6 +27,16 @@
   top: 0px;
 }
 
+.gear-dimensions {
+  width: 160px;
+  height: 160px;
+}
+
+.star-dimensions {
+  width: 80px;
+  height: 80px;
+}
+
 .gear-slot {
   position: absolute;
   right: 17px;
@@ -47,56 +57,56 @@
 
 .center-gear {
   position: absolute;
-  left: 278px;
-  top: 156px;
+  left: 271px;
+  top: 148px;
 }
 
 .center-star {
   position: absolute;
-  left: 31px;
-  top: 34px;
+  left: 39px;
+  top: 39px;
 }
 
 .topLeft-gear {
   position: absolute;
-  left: 52px;
-  top: 35px;
+  left: 38px;
+  top: 22px;
 }
 
 .topLeft-star {
   position: absolute;
   left: 42px;
-  top: 41px;
+  top: 39px;
 }
 
 .topCenter-gear {
   position: absolute;
-  left: 265px;
-  top: 65px;
+  left: 235px;
+  top: 34px;
 }
 
 .topCenter-star {
   position: absolute;
-  left: 31px;
-  top: 28px;
+  left: 40px;
+  top: 40px;
 }
 
 .centerLeft-gear {
   position: absolute;
-  left: 145px;
-  top: 185px;
+  left: 120px;
+  top: 158px;
 }
 
 .centerLeft-star {
   position: absolute;
-  left: 35px;
-  top: 32px;
+  left: 41px;
+  top: 37px;
 }
 
 .centerRight-gear {
   position: absolute;
-  left: 441px;
-  top: 160px;
+  left: 425px;
+  top: 146px;
 }
 
 .centerRight-star {
@@ -107,38 +117,38 @@
 
 .bottomLeft-gear {
   position: absolute;
-  left: 85px;
-  top: 298px;
+  left: 68px;
+  top: 281px;
 }
 
 .bottomLeft-star {
   position: absolute;
-  left: 39px;
+  left: 41px;
   top: 39px;
 }
 
 .bottomCenter-gear {
   position: absolute;
-  left: 318px;
-  top: 310px;
+  left: 285px;
+  top: 276px;
 }
 
 .bottomCenter-star {
   position: absolute;
-  left: 30px;
-  top: 29px;
+  left: 41px;
+  top: 40px;
 }
 
 .bottomRight-gear {
   position: absolute;
-  left: 522px;
-  top: 310px;
+  left: 500px;
+  top: 288px;
 }
 
 .bottomRight-star {
   position: absolute;
-  left: 38px;
-  top: 38px;
+  left: 40px;
+  top: 40px;
 }
 
 

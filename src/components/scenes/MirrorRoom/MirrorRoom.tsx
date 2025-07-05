@@ -18,6 +18,7 @@ const MirrorRoom = () => {
       <LoadingScreen/>
       <BasicItem name="agPotion"/>
       <BasicItem name="coPotion"/>
+      <BasicItem name="crowbar"/>
 
       {MirrorRoomSubscenes.map((subscene, index) => (
         <BasicSubscene {...subscene} prevScene="main" key={index}/>

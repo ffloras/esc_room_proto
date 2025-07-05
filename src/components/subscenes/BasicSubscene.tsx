@@ -25,6 +25,7 @@ const changeSubscene = () => {
           top:`${ subscene.top}px`,
           left:`${ subscene.left}px`,
           clipPath: subscene.shape,
+          zIndex: subscene.zindex ? subscene.zindex : 'auto',
         }}
         onClick={changeSubscene} 
       />

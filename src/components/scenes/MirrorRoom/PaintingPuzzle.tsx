@@ -1,10 +1,12 @@
-import MainDirectionButton from '../../mainGame/MainDirectionButton'
+import { useState, use, useEffect } from 'react'
+import { PuzzleContext } from '../../../contexts/PuzzleContext'
+//images
 import paintingPuzzleImg from '../../../assets/img/subscenes/mainRoom/paintingPuzzleCloseup.png'
 import symbolsSpritesheet from '../../../assets/img/subscenes/mainRoom/paintingSymbolsSpritesheet.png'
 import paintingPuzzleOpenImg from '../../../assets/img/subscenes/mainRoom/paintingPuzzleOpenCloseup.png'
+//components
 import Counter from '../../subscenes/Counter'
-import { useState, use, useEffect } from 'react'
-import { PuzzleContext } from '../../../contexts/PuzzleContext'
+import MainDirectionButton from '../../mainGame/MainDirectionButton'
 import BasicItem from '../../items/BasicItem'
 import LoadingScreen from '../../mainGame/LoadingScreen'
 
@@ -17,12 +19,14 @@ const PaintingPuzzle = () => {
   const symbols = [];
   const ans = [1,2,3,4,5];
 
+  //check and set puzzle completion
   useEffect(() => {
     if (JSON.stringify(ans) === JSON.stringify(count)) {
       setPuzzleUnlocked((prev) => ({...prev, paintingBox: true}))
     }
   }, [count])
 
+  //set up counter components
   for (let i = 0; i < count.length; i++) {
     symbols.push(
       <Counter img={symbolsSpritesheet} 

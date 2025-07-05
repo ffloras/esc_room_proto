@@ -1,41 +1,45 @@
-
-import MainDirectionButton from '../../mainGame/MainDirectionButton'
-import mirrorCloseup from '../../../assets/img/subscenes/mainRoom/mirrorCloseup.png'
-import { useState } from 'react'
-import "../../../css/mirrorRoom.css"
+import { useState, use } from 'react';
+import { PuzzleContext } from '../../../contexts/PuzzleContext';
+import { ActiveItemContext } from '../../../contexts/ActiveItemContext';
+import { ItemsContext } from '../../../contexts/ItemsContext';
+import "../../../css/mirrorRoom.css";
+//images
+import mirrorCloseupImg from '../../../assets/img/subscenes/mainRoom/mirrorCloseup.png'
+import mirrorFragmentSpritesheet from '../../../assets/img/subscenes/mainRoom/mirrorFragments.png'
+import mirrorClothImg from '../../../assets/img/subscenes/mainRoom/mirrorCloth.png'
+//components
 import LoadingScreen from '../../mainGame/LoadingScreen'
+import MainDirectionButton from '../../mainGame/MainDirectionButton'
+
 
 const Mirror = () => {
-  const [textActive, setTextActive] = useState({
-    player: false,
-    ghost: false
-  });
+  const {puzzleUnlocked, setPuzzleUnlocked} = use(PuzzleContext);
+  const {activeItem, setActiveItem} = use(ActiveItemContext);
+  const {removeSidebarItem} = use(ItemsContext);
 
-  const showPlayerText = () => {
-    setTextActive((prev) => ({...prev, player: !prev.player}));
-  }
-
-  const showGhostText = () => {
-    setTextActive((prev) => ({...prev, ghost: !prev.ghost}));
+  const addFragment = () => {
+    if (!activeItem || !activeItem.includes('mirrorFragment')) return;
+    setPuzzleUnlocked((prev) => ({...prev, [activeItem]: true}));
+    removeSidebarItem(activeItem);
+    setActiveItem(null);
   }
 
   return (
-    <div className='scene-container'style={{backgroundImage: `url(${mirrorCloseup})`}}>
+    <div className='scene-container'>
       <LoadingScreen/>
-      {textActive.player && 
-        <>
-          <span className='text-box'style={{top: '160px', left: '260px'}}>Who am I?</span>
-          <span className='text-box'style={{top: '180px', left: '280px'}}>What am I?</span>
-        </>
+      <img className="mirror-closeup" src={mirrorCloseupImg} alt="mirror closeup" />
+      <img className="mirror-cloth" src={mirrorClothImg} alt="mirror cloth" />
+      <div className="mirror-clickbox" onClick={() => addFragment()}></div>
+      
+      {puzzleUnlocked.mirrorFragment1 && 
+        <div className="mirror-fragment1" style={{backgroundImage: `url(${mirrorFragmentSpritesheet})`}}></div>
       }
-      {textActive.ghost &&
-        <>
-          <span className='text-box'style={{top: '70px', left: '305px'}}>Who are you?</span>
-          <span className='text-box'style={{top: '90px', left: '315px'}}>What are you?</span>
-        </>
+      {puzzleUnlocked.mirrorFragment2 && 
+        <div className="mirror-fragment2" style={{backgroundImage: `url(${mirrorFragmentSpritesheet})`}}></div>
       }
-      <div className='player' onClick={showPlayerText}></div>
-      <div className="ghost" onClick={showGhostText}></div>
+      {puzzleUnlocked.mirrorFragment3 && 
+        <div className="mirror-fragment3" style={{backgroundImage: `url(${mirrorFragmentSpritesheet})`}}></div>
+      }
       
       <MainDirectionButton direction='down'/>
     </div>

@@ -21,13 +21,13 @@ import StarBox from "../components/scenes/ClockRoom/StarBox";
 
 //Chair Room subscenes
 import flowerDrawerImg from "../assets/img/subscenes/chairRoom/flowerDrawer.png"
-import FlowerDrawer from "../components/scenes/ChairRoom/FlowerDrawer";
+import Wardrobe from "../components/scenes/ChairRoom/Wardrobe";
 
 //Painting Room subscenes
 import wardrobeImg from "../assets/img/subscenes/paintingRoom/wardrobeLocked.png"
-import Wardrobe from "../components/scenes/PaintingRoom/Wardrobe";
 import ClockBottom from "../components/scenes/ClockRoom/ClockBottom";
 import ClockTop from "../components/scenes/ClockRoom/ClockTop";
+import FlowerDrawer from "../components/scenes/PaintingRoom/FlowerDrawer";
 
 type StagesProp = {
   [key: number]: ScenesProp,
@@ -54,12 +54,12 @@ export const Stages: StagesProp = {
   2: 
   {
     main: ChairRoom,
-    flowerDrawer: FlowerDrawer
+    wardrobe: Wardrobe,
   },
   3: 
   {
     main: PaintingRoom,
-    wardrobe: Wardrobe
+    flowerDrawer: FlowerDrawer,
   },
   4: 
   {
@@ -78,22 +78,23 @@ export type SubsceneProp = {
   left: number;
   shape: string;
   next: string;
+  zindex?: number;
 }
 
 export const MirrorRoomSubscenes: SubsceneProp[] = [
   {
     name: "mirror",
     img: mirrorImg,
-    top: 70,
-    left: 450,
-    shape: "polygon(62% 0, 79% 8%, 100% 19%, 100% 53%, 98% 80%, 92% 100%, 7% 100%, 0 91%, 4% 23%, 26% 9%)",
+    top: 73,
+    left: 410,
+    shape: "",
     next: "mirror",
   },
   {
     name: "paintingPuzzle",
     img: paintingPuzzleImg,
-    top: 91,
-    left: 100,
+    top: 56,
+    left: 80,
     shape: "",
     next: "paintingPuzzle"
   },
@@ -112,22 +113,23 @@ export const ClockRoomSubscenes: SubsceneProp[] = [
 
 export const ChairRoomSubscenes: SubsceneProp[] = [
   {
-    name: "flowerDrawer",
-    img: flowerDrawerImg,
-    top: 230,
-    left: 120,
+    name: "wardrobe",
+    img: wardrobeImg,
+    top: 55,
+    left: 10,
     shape: "",
-    next: "flowerDrawer",
+    next: 'wardrobe',
+    zindex: 10,
   },
 ]
 
 export const PaintingRoomSubscenes: SubsceneProp[] = [
   {
-    name: "wardrobe",
-    img: wardrobeImg,
-    top: 125,
-    left: 500,
+    name: "flowerDrawer",
+    img: flowerDrawerImg,
+    top: 220,
+    left: 520,
     shape: "",
-    next: 'wardrobe'
+    next: "flowerDrawer",
   },
 ]

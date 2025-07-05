@@ -11,7 +11,6 @@ const BasicItem: FC<BasicItemProp> = ({name}) => {
   const {items, setItemObtained} = use(AllItemsContext);
 
   const obtainItem = () =>{
-    console.log("click")
     addSidebarItem(name);
     setItemObtained(name, true);
   }

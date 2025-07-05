@@ -1,112 +1,39 @@
-.flower-drawer {
+.wardrobe {
   position: absolute;
-  top: 150px;
-  left: 30px;
+  left: 170px;
 }
 
-.flower {
+.wardrobe-container {
+  background-color: black;
   position: absolute;
-  top: 26px;
-  left: 175px;
-  z-index: 10;
+  width: 219px;
+  height: 278px;
+  top: 74px;
+  left: 241px;
 }
 
-.flower-color {
-  position: absolute;
-  width: 27px;
-  height: 26px;
-  border-radius: 50%;
-  top: 6px;
-  left: 40px;
-  z-index: -1;
+.black-screen {
+  width: 219x;
+  height: 278px;
+  background-size: cover;
+  mask-repeat: no-repeat;
+  opacity: 1;
+  transition: opacity 1s;
 }
 
-.open-top-drawer {
+.wardrobe-item {
+  width: 50px;
+  height: 50px;
   position: absolute;
-  /* border: 2px pink solid; */
-  top: 210px;
-  left: 70px;
-  width: 172px;
-  height: 53px;
+  border: 1px solid red;
+  left: 100px;
+  top: 100px;
 }
 
-.open-bottom-drawer {
+.window-container {
   position: absolute;
-  /* border: 2px pink solid; */
-  top: 280px;
-  left: 70px;
-  width: 172px;
-  height: 53px;
+  width: 280px;
+  height: 230px;
+  left: 220px;
+  top: 40px;
 }
-
-.close-top-drawer {
-  position: absolute;
-  /* border: 2px pink solid; */
-  top: 245px;
-  left: 65px;
-  width: 185px;
-  height: 58px;
-}
-
-.close-bottom-drawer {
-  position: absolute;
-  /* border: 2px pink solid; */
-  top: 318px;
-  left: 65px;
-  width: 185px;
-  height: 58px;
-}
-
-.potion-in-drawer {
-  position: absolute;
-  top: 285px;
-  left: 90px;
-}
-
-.show-paper {
-  position: absolute;
-  /* border: 2px pink solid; */
-  top: 210px;
-  left: 120px;
-  width: 80px;
-  height: 30px;
-}
-
-.flower-paper {
-  position: absolute;
-  top: 30px;
-  left: 350px;
-}
-
-.items-area {
-  /* border: 1px solid pink; */
-  position: absolute;
-  width: 250px;
-  height: 130px;
-  top: 55px;
-  left: 33px;
-  z-index: 5;
-}
-
-.flower-co-potion {
-  position: absolute;
-  bottom: 290px;
-  left: 55px;
-  z-index: 10;
-}
-
-.flower-ag-potion {
-  position: absolute;
-  bottom: 290px;
-  left: 87px;
-  z-index: 10;
-}
-
-.flower-ni-potion {
-  position: absolute;
-  bottom: 290px;
-  left: 143px;
-  z-index: 10;
-}
-
-

@@ -4,7 +4,8 @@ import agPotionImg from "../assets/img/items/flowerAgUnselected.png"
 import coPotionImg from "../assets/img/items/flowerCoUnselected.png"
 import fireflyImg from "../assets/img/items/firefly.png"
 import paintingKeyImg from "../assets/img/items/key.png"
-import mirrorPiece1 from "../assets/img/items/mirrorPiece1.png"
+import mirrorFragment1 from "../assets/img/items/mirrorPiece1.png"
+import crowbarImg from '../assets/img/items/crowbar.png'
 
 export const ItemsContainer = {
   height: 70,
@@ -32,23 +33,23 @@ export const Items: ItemsProp = {
     name: "Ag Potion",
     img: agPotionImg,
     isObtained: false,
-    top: 81,
-    left: 200,
+    top: 46,
+    left: 190,
     shape: "ag-potion xs"
   },
   coPotion: {
     name: "Co Potion",
     img: coPotionImg,
     isObtained: false,
-    top: 71,
-    left: 250,
+    top: 37,
+    left: 235,
     shape: "circle sm"
   },
   gear: {
     name: "gear",
     img: gearImg,
     isObtained: false,
-    top: 120,
+    top: 115,
     left: 220,
     shape: "circle"
   },
@@ -73,9 +74,17 @@ export const Items: ItemsProp = {
     shape: "",
     isObtained: false,
   },
-  mirrorPiece1: {
-    name: "mirror piece",
-    img: mirrorPiece1,
+  crowbar: {
+    name: "Crowbar",
+    img: crowbarImg,
+    top: 310,
+    left: 323,
+    shape: '',
+    isObtained: false,
+  },
+  mirrorFragment1: {
+    name: "Mirror Fragment",
+    img: mirrorFragment1,
     top: 359,
     left: 300,
     shape: "",

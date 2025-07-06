@@ -1,4 +1,4 @@
-import { useState, use } from 'react';
+import { use } from 'react';
 import { PuzzleContext } from '../../../contexts/PuzzleContext';
 import { ActiveItemContext } from '../../../contexts/ActiveItemContext';
 import { ItemsContext } from '../../../contexts/ItemsContext';

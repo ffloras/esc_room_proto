@@ -15,12 +15,12 @@ const BasicItem: FC<BasicItemProp> = ({name}) => {
     setItemObtained(name, true);
   }
 
-  const {img, top, left, shape, isObtained} = items[name];
+  const {img, top, left, shape, isObtained, className} = items[name];
 
   return (
     <>
       <img 
-        className={shape}
+        className={`${shape} ${className}`}
         src={img} alt={name}
         style={{
           position: "absolute",

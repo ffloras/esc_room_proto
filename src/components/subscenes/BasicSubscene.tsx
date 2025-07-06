@@ -18,6 +18,7 @@ const changeSubscene = () => {
   return (
     <>
       <img 
+        className={subscene.className ? subscene.className : ''}
         src={subscene.img} 
         alt={subscene.name}
         style={{

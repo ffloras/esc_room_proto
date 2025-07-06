@@ -6,6 +6,7 @@ import fireflyImg from "../assets/img/items/firefly.png"
 import paintingKeyImg from "../assets/img/items/key.png"
 import mirrorFragment1 from "../assets/img/items/mirrorPiece1.png"
 import crowbarImg from '../assets/img/items/crowbar.png'
+import brassKeyImg from '../assets/img/items/brassKey.png'
 
 export const ItemsContainer = {
   height: 70,
@@ -26,6 +27,7 @@ export type ItemProp = {
   shape?: string;
   scale?: number;
   zindex?: string;
+  className?: string;
 }
 
 export const Items: ItemsProp = {
@@ -90,6 +92,12 @@ export const Items: ItemsProp = {
     shape: "",
     isObtained: false,
     zindex: '0',
+  },
+  brassKey: {
+    name: "Brass Key",
+    img: brassKeyImg,
+    isObtained: false,
+    className: "brass-key",
   }
 
 }

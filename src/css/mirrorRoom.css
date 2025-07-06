@@ -85,3 +85,15 @@
 .symbol-4 {
   left: 476px;
 }
+
+.moon-clue-sm {
+  position: absolute;
+  left: 300px;
+  top: 110px;
+}
+
+.moon-clue {
+  position: absolute;
+  left: 200px;
+  top: 50px;
+}

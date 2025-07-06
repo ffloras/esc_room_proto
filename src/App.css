@@ -47,6 +47,7 @@
 .scene-container {
   position: relative;
   height: 100%;
+  overflow: hidden;
 }
 
 .text-box {

@@ -14,6 +14,8 @@ import mirrorImg from "../assets/img/subscenes/mainRoom/mirror.png"
 import Mirror from "../components/scenes/MirrorRoom/Mirror";
 import paintingPuzzleImg from "../assets/img/subscenes/mainRoom/paintingPuzzle.png"
 import PaintingPuzzle from '../components/scenes/MirrorRoom/PaintingPuzzle'
+import moonClueImg from '../assets/img/subscenes/mainRoom/moonPaperSm.png'
+import MoonClue from "../components/scenes/MirrorRoom/MoonClue";
 
 //Clock Room subscenes
 import starBoxImg from '../assets/img/subscenes/clockRoom/starBox.png'
@@ -24,7 +26,7 @@ import flowerDrawerImg from "../assets/img/subscenes/chairRoom/flowerDrawer.png"
 import Wardrobe from "../components/scenes/ChairRoom/Wardrobe";
 
 //Painting Room subscenes
-import wardrobeImg from "../assets/img/subscenes/paintingRoom/wardrobeLocked.png"
+//import wardrobeImg from "../assets/img/subscenes/paintingRoom/wardrobeLocked.png"
 import ClockBottom from "../components/scenes/ClockRoom/ClockBottom";
 import ClockTop from "../components/scenes/ClockRoom/ClockTop";
 import FlowerDrawer from "../components/scenes/PaintingRoom/FlowerDrawer";
@@ -43,6 +45,7 @@ export const Stages: StagesProp = {
     main: MirrorRoom,
     mirror: Mirror,
     paintingPuzzle: PaintingPuzzle,
+    moonClue: MoonClue,
   },
   1: 
   {
@@ -74,11 +77,12 @@ export const Stages: StagesProp = {
 export type SubsceneProp = {
   name: string;
   img: string;
-  top: number;
-  left: number;
-  shape: string;
+  top?: number;
+  left?: number;
+  shape?: string;
   next: string;
   zindex?: number;
+  className?: string;
 }
 
 export const MirrorRoomSubscenes: SubsceneProp[] = [
@@ -98,6 +102,12 @@ export const MirrorRoomSubscenes: SubsceneProp[] = [
     shape: "",
     next: "paintingPuzzle"
   },
+  {
+    name: "moonClue",
+    img: moonClueImg,
+    next: "moonClue",
+    className: "moon-clue-sm"
+  }
 ]
 
 export const ClockRoomSubscenes: SubsceneProp[] = [
@@ -112,15 +122,15 @@ export const ClockRoomSubscenes: SubsceneProp[] = [
 ]
 
 export const ChairRoomSubscenes: SubsceneProp[] = [
-  {
-    name: "wardrobe",
-    img: wardrobeImg,
-    top: 55,
-    left: 10,
-    shape: "",
-    next: 'wardrobe',
-    zindex: 10,
-  },
+  // {
+  //   name: "wardrobe",
+  //   img: wardrobeImg,
+  //   top: 25,
+  //   left: 10,
+  //   shape: "",
+  //   next: 'wardrobe',
+  //   zindex: 10,
+  // },
 ]
 
 export const PaintingRoomSubscenes: SubsceneProp[] = [

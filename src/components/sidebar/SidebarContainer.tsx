@@ -1,5 +1,5 @@
 import "../../css/sidebar.css"
-import { use } from "react"
+import { use} from "react"
 import { ItemsContext, type CurrentItemProp, } from "../../contexts/ItemsContext";
 import SidebarScrollButton from "./SidebarScrollButton";
 import { ItemsContainer } from "../../db/itemsDB";
@@ -18,20 +18,21 @@ const SidebarContainer = () => {
 
   
   // useEffect(() => {
-  //   console.log(containerMargin);
+    
   // }, [containerMargin])
 
 //   useEffect(() => {
-//   console.log("Component mounted");
+
 
 //   return () => {
-//     console.log("Component unmounted");
+//     console.log("margin: ",containerMargin);
+//     console.log("height: ", containerHeight);
 //   };
-// }, []);
+// }, [currentItemsList]);
 
   return (
     <div className="sidebar-main-container center-col">
-      <SidebarScrollButton containerHeight={containerHeight} direction="up"/>
+      <SidebarScrollButton direction="up"/>
       
       <div className="sidebar-outer-container center-col">
         <div className='sidebar-inner-container' style={{ height: `${containerHeight}px`, marginTop: `${containerMargin}px` }}>
@@ -39,7 +40,7 @@ const SidebarContainer = () => {
         </div>
       </div>
 
-      <SidebarScrollButton containerHeight={containerHeight} direction="down"/>
+      <SidebarScrollButton direction="down"/>
     </div>
   )
 }

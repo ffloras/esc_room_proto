@@ -1,4 +1,4 @@
-import React, { createContext, useState, type ReactNode, type FC } from "react";
+import React, { createContext, useState, type ReactNode, type FC} from "react";
 import { Items, ItemsContainer } from "../db/itemsDB"
 
 export type CurrentItemProp = {
@@ -50,7 +50,7 @@ export const ItemsProvider: FC<ItemsProviderType> = ({ children }) => {
       }
     }
     setCurrentItemsList((prev) => [...prev, item])
-    //?? dunno but it works
+
     let containerHeight = (currentItemsList.length + 1) * itemHeight;
     let lowerLimit = -(containerHeight - maxVisibleItems * itemHeight);
     setContainerMargin(lowerLimit)
@@ -61,8 +61,16 @@ export const ItemsProvider: FC<ItemsProviderType> = ({ children }) => {
       setCurrentItemsList((prev) => [...(prev.filter((item) => item?.name != name)), null])
     } else {
       setCurrentItemsList((prev) => (prev.filter((item) => item?.name != name)))
+      if (containerMargin < 0) {
+        setContainerMargin((prev) => (prev + itemHeight))
+      }
     }
   }
+
+  // useEffect(() => {
+    
+  // }, [currentItemsList])
+
 
   return (
     <ItemsContext.Provider value={

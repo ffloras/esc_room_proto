@@ -6,6 +6,7 @@ import LoadingScreen from "../../mainGame/LoadingScreen";
 import Window from "../../subscenes/Window";
 import BasicItem from "../../items/BasicItem";
 import Wardrobe from "./Wardrobe";
+import Bird from "./Bird";
 
 const ChairRoom = () => {
 
@@ -23,6 +24,8 @@ const ChairRoom = () => {
 
       <Window/>
       <BasicItem name="brassKey"/>
+
+      <Bird/>
 
       <MainDirectionButton direction="left"/>
       <MainDirectionButton direction="up"/>

@@ -6,6 +6,7 @@ import MainDirectionButton from "../../mainGame/MainDirectionButton";
 import { MirrorRoomSubscenes} from "../../../db/scenesDB";
 import "../../../css/mirrorRoom.css";
 import LoadingScreen from "../../mainGame/LoadingScreen";
+import Desk from "./Desk";
 
 
 const MirrorRoom = () => {
@@ -23,6 +24,8 @@ const MirrorRoom = () => {
       {MirrorRoomSubscenes.map((subscene, index) => (
         <BasicSubscene {...subscene} prevScene="main" key={index}/>
       ))}
+
+      <Desk/>
       
 
       <MainDirectionButton direction="left"/>

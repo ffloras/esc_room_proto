@@ -97,3 +97,51 @@
   left: 200px;
   top: 50px;
 }
+
+.desk-container {
+  position: absolute;
+  left: 20px;
+  top: 150px;
+  clip-path: polygon(11% 33%, 5% 0, 14% 0, 24% 33%, 100% 33%, 100% 41%, 97% 41%, 98% 95%, 41% 95%, 29% 100%, 0 100%, 0 33%);
+}
+
+
+.desk-top-clickbox {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 40%;
+  width: 100%;
+  /* background-color: blue; */
+}
+
+.desk-top-drawer {
+  position:  absolute;
+  left: 189px;
+  top: 125px;
+  width: 123px;
+  z-index: 5;
+}
+
+.drawer-seed {
+  position: absolute;
+  width: 49px;
+  height: 27px;
+  left: 219px;
+  top: 125px;
+  z-index: 20;
+}
+
+.desk-bottom-drawer {
+  position: absolute;
+  left: 189px;
+  top: 182px;
+  width: 123px;
+}
+
+.completion-paper-clickbox {
+  position: absolute;
+  left: 32px;
+  width: 58px;
+  height: 25px;
+}

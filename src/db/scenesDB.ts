@@ -16,6 +16,7 @@ import paintingPuzzleImg from "../assets/img/subscenes/mainRoom/paintingPuzzle.p
 import PaintingPuzzle from '../components/scenes/MirrorRoom/PaintingPuzzle'
 import moonClueImg from '../assets/img/subscenes/mainRoom/moonPaperSm.png'
 import MoonClue from "../components/scenes/MirrorRoom/MoonClue";
+import Maze from "../components/scenes/MirrorRoom/Maze";
 
 //Clock Room subscenes
 import starBoxImg from '../assets/img/subscenes/clockRoom/starBox.png'
@@ -30,6 +31,7 @@ import Wardrobe from "../components/scenes/ChairRoom/Wardrobe";
 import ClockBottom from "../components/scenes/ClockRoom/ClockBottom";
 import ClockTop from "../components/scenes/ClockRoom/ClockTop";
 import FlowerDrawer from "../components/scenes/PaintingRoom/FlowerDrawer";
+import CompletionPaper from "../components/scenes/MirrorRoom/CompletionPaper";
 
 type StagesProp = {
   [key: number]: ScenesProp,
@@ -46,6 +48,8 @@ export const Stages: StagesProp = {
     mirror: Mirror,
     paintingPuzzle: PaintingPuzzle,
     moonClue: MoonClue,
+    completionPaper: CompletionPaper,
+    maze: Maze,
   },
   1: 
   {
@@ -76,7 +80,7 @@ export const Stages: StagesProp = {
 
 export type SubsceneProp = {
   name: string;
-  img: string;
+  img?: string;
   top?: number;
   left?: number;
   shape?: string;
@@ -106,8 +110,8 @@ export const MirrorRoomSubscenes: SubsceneProp[] = [
     name: "moonClue",
     img: moonClueImg,
     next: "moonClue",
-    className: "moon-clue-sm"
-  }
+    className: "moon-clue-sm",
+  },
 ]
 
 export const ClockRoomSubscenes: SubsceneProp[] = [
@@ -137,7 +141,7 @@ export const PaintingRoomSubscenes: SubsceneProp[] = [
   {
     name: "flowerDrawer",
     img: flowerDrawerImg,
-    top: 220,
+    top: 195,
     left: 520,
     shape: "",
     next: "flowerDrawer",

@@ -11,7 +11,7 @@ const BasicSubscene: React.FC<BasicSubsceneProp> = (subscene) => {
 const {setCurrentScene, setPrevScene} = use(SceneContext)
 
 const changeSubscene = () => {
-  setCurrentScene(subscene.next);
+  setCurrentScene(subscene.next); //new
   setPrevScene(subscene.prevScene);
 }
 
@@ -19,7 +19,7 @@ const changeSubscene = () => {
     <>
       <img 
         className={subscene.className ? subscene.className : ''}
-        src={subscene.img} 
+        src={subscene.img ? subscene.img : undefined} 
         alt={subscene.name}
         style={{
           position: "absolute",

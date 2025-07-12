@@ -11,29 +11,27 @@ import BasicItem from '../../items/BasicItem'
 import LoadingScreen from '../../mainGame/LoadingScreen'
 
 const PaintingPuzzle = () => {
-  const [count, setCount] = useState([0, 0, 0, 0, 0]);
-  const{puzzleUnlocked, setPuzzleUnlocked} = use(PuzzleContext);
+  const{puzzleUnlocked, setPuzzleUnlocked, puzzleState} = use(PuzzleContext);
   const [openImgLoaded, setOpenImgLoaded] = useState<boolean>(false);
 
   const maxSymbolCount = 7;
   const symbols = [];
-  const ans = [1,2,3,4,5];
+  const ans = [3, 6, 5, 0, 4];
 
   //check and set puzzle completion
   useEffect(() => {
-    if (JSON.stringify(ans) === JSON.stringify(count)) {
+    if (JSON.stringify(ans) === JSON.stringify(puzzleState.paintingBox)) {
       setPuzzleUnlocked((prev) => ({...prev, paintingBox: true}))
     }
-  }, [count])
+  }, [puzzleState])
 
   //set up counter components
-  for (let i = 0; i < count.length; i++) {
+  for (let i = 0; i < puzzleState.paintingBox.length; i++) {
     symbols.push(
       <Counter img={symbolsSpritesheet} 
         className={`painting-symbol symbol-${i}`} 
         offsetx={-43} pos={i} max={maxSymbolCount}
-        count={count} setCount={setCount}
-        key={i}
+        key={i} puzzle='paintingBox'
       />
     )
   }

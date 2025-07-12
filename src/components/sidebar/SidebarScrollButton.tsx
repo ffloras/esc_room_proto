@@ -4,18 +4,17 @@ import { ItemsContainer } from '../../db/itemsDB'
 import { ItemsContext } from '../../contexts/ItemsContext'
 
 type SidebarScrollButtonProps = {
-  containerHeight: number;
   direction: "up" | "down";
 }
 
-const SidebarScrollButton: React.FC<SidebarScrollButtonProps> = ({containerHeight, direction}) => {
-  const {containerMargin, setContainerMargin} = use(ItemsContext);
+const SidebarScrollButton: React.FC<SidebarScrollButtonProps> = ({direction}) => {
+  const {containerMargin, setContainerMargin, currentItemsList} = use(ItemsContext);
   const [buttonVisibility, setButtonVisibilty] = useState<"visible" | "hidden">("hidden");
 
   const maxVisibleItems = 5;
   const itemHeight = ItemsContainer.height + ItemsContainer.gap + ItemsContainer.border * 2;
   let upperLimit = 0;
-  let lowerLimit = -(containerHeight - maxVisibleItems * itemHeight);
+  let lowerLimit = -(currentItemsList.length - maxVisibleItems) * itemHeight;
   
   //scrolls one item container's length for every button click by changing sidebar container margins
   function scroll(direction: string) {
@@ -35,7 +34,7 @@ const SidebarScrollButton: React.FC<SidebarScrollButtonProps> = ({containerHeigh
     if (direction == 'down') {
       containerMargin <= lowerLimit ? setButtonVisibilty("hidden") : setButtonVisibilty("visible");
     }
-  }, [containerMargin])
+  }, [currentItemsList, containerMargin])
 
   return (
     <>

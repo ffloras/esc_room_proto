@@ -12,8 +12,6 @@ const PaintingRoom = () => {
       backgroundImage: `url(${paintingRoomImg})`
     }}>
       
-
-      PaintingRoom
       <LoadingScreen />
       {PaintingRoomSubscenes.map((subscene) => (
         <BasicSubscene {...subscene} prevScene="main" key={subscene.name}/>

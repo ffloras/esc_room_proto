@@ -6,7 +6,7 @@ const LoadingScreen = () => {
   useEffect(() => {
     const loadTimer = setTimeout(() => {
       setLoad(false);
-    }, 400);
+    }, 600);
     return () => clearTimeout(loadTimer);
   }, [])
 

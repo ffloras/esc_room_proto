@@ -7,6 +7,10 @@ import paintingKeyImg from "../assets/img/items/key.png"
 import mirrorFragment1 from "../assets/img/items/mirrorPiece1.png"
 import crowbarImg from '../assets/img/items/crowbar.png'
 import brassKeyImg from '../assets/img/items/brassKey.png'
+import ironKeyImg from '../assets/img/items/progressKey.png'
+import seedImg from '../assets/img/items/seedsItem.png'
+import mushroomImg from '../assets/img/items/mushroom.png'
+import bugImg from '../assets/img/items/beetle.png'
 
 export const ItemsContainer = {
   height: 70,
@@ -26,7 +30,7 @@ export type ItemProp = {
   left?: number;
   shape?: string;
   scale?: number;
-  zindex?: string;
+  zindex?: number;
   className?: string;
 }
 
@@ -79,9 +83,10 @@ export const Items: ItemsProp = {
   crowbar: {
     name: "Crowbar",
     img: crowbarImg,
-    top: 310,
-    left: 323,
+    top: 315,
+    left: 150,
     shape: '',
+    zindex: 10,
     isObtained: false,
   },
   mirrorFragment1: {
@@ -91,13 +96,33 @@ export const Items: ItemsProp = {
     left: 300,
     shape: "",
     isObtained: false,
-    zindex: '0',
+    zindex: 0,
   },
   brassKey: {
     name: "Brass Key",
     img: brassKeyImg,
     isObtained: false,
     className: "brass-key",
+  },
+  ironKey: {
+    name: "Iron key",
+    img: ironKeyImg,
+    isObtained: false,
+  },
+  mushroom: {
+    name: "mushroom",
+    img: mushroomImg,
+    isObtained: false,
+  },
+  bug: {
+    name: "bug",
+    img: bugImg,
+    isObtained: false,
+  },
+  seeds: {
+    name: "seeds",
+    img: seedImg,
+    isObtained: false,
   }
 
 }

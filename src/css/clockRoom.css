@@ -184,4 +184,25 @@
   border-radius: 50%;
  }
 
+ .clock-hand-sm {
+    position: absolute;
+    background-color: black;
+    transform-origin: 50% 100%;
+    pointer-events: none;
+ }
+
+ .clock-hour-sm {
+  width: 2px;
+  height: 10px;
+  left: 123px;
+  top: 135px;
+ }
+
+ .clock-minute-sm {
+  width: 2px;
+  height: 15px;
+  left: 123px;
+  top: 130px;
+ }
+
 

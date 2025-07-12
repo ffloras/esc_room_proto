@@ -20,6 +20,13 @@
   100% {background-color: rgba(255, 255, 255, 0);}
 }
 
+@keyframes shake {
+  0% {transform: rotate(0deg);}
+  30% {transform: rotate(1deg);}
+  60% {transform: rotate(-1deg);}
+  100% {transform: rotate(0deg);}
+}
+
 .loading-screen {
   position: absolute;
   height: 448px;
@@ -27,7 +34,7 @@
   top: 0px;
   left: 0px;
   z-index: 100;
-  animation: fadeOut 400ms;
+  animation: fadeOut 600ms;
 }
 
 /* side display */

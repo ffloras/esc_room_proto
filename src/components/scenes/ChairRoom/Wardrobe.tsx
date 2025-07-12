@@ -3,7 +3,7 @@
 // import wardrobeLockedImg from '../../../assets/img/subscenes/paintingRoom/wardrobeLrgLocked.png'
 // import wardrobeUnlockedImg from "../../../assets/img/subscenes/paintingRoom/wardrobeLrgUnlocked.png"
 // import wardrobeOpenImg from "../../../assets/img/subscenes/paintingRoom/wardrobeLrgOpen.png"
-import wardrobeInsideImg from "../../../assets/img/subscenes/paintingRoom/wardrobeInside.png"
+import wardrobeInsideSpritesheet from '../../../assets/img/subscenes/chairRoom/wardrobeInsideSpritesheet221x280.png'
 import lightImg from "../../../assets/img/subscenes/paintingRoom/light.png"
 
 import React, { useState, use, useEffect } from "react"
@@ -25,7 +25,24 @@ const Wardrobe = () => {
     open: 2,
   }
 
-  const { puzzleUnlocked, setPuzzleUnlocked } = use(PuzzleContext);
+  const wardrobeInsideStates: WardrobeStatesProp = {
+    completeBugIronKeyMushroom: 0,
+    completeBugMushroom: 1,
+    completeBugIronKey: 2,
+    completeIronKeyMushroom: 3,
+    completeBug: 4,
+    completeMushroom: 5,
+    completeIronKey: 6,
+    complete: 7
+  }
+
+  // const wardrobeItemsObtained = {
+  //   Bug: false,
+  //   ironKey: false,
+  //   Mushroom: false,
+  // }
+
+  const { puzzleUnlocked, setPuzzleUnlocked} = use(PuzzleContext);
 
   const [lightX, setLightX] = useState<number | null>(null);
   const [lightY, setLightY] = useState<number | null>(null);
@@ -33,15 +50,21 @@ const Wardrobe = () => {
   // const [wardrobeOpen, setWardrobeOpen] = useState<boolean>(false);
 
   const [wardrobeState, setWardrobeState] = useState<number>(puzzleUnlocked.wardrobe ? wardrobeStates.unlockedClosed : wardrobeStates.locked);
+  const [wardrobeInsideState, setWardrobeInsideState] = useState<number>(setWardrobeContent())
   const [startCompletion, setStartCompletion] = useState<boolean>(false);
   const [text, setText] = useState<boolean>(false);
   // const [imgLoaded, setImgLoaded] = useState<boolean>(false);
 
 
   const { activeItem, setActiveItem } = use(ActiveItemContext);
-  const { removeSidebarItem } = use(ItemsContext);
+  const { addSidebarItem, removeSidebarItem } = use(ItemsContext);
 
-
+  function setWardrobeContent() {
+    let ironKey = puzzleUnlocked.ironKeyWardrobe ? '' : "IronKey";
+    let bug = puzzleUnlocked.bugWardrobe ? '' : 'Bug';
+    let mushroom = puzzleUnlocked.mushroomWardrobe ? '' : 'Mushroom';
+    return wardrobeInsideStates[`complete${bug}${ironKey}${mushroom}`];
+  }
 
   const openWardrobe = () => {
     if (activeItem == "paintingKey" && !puzzleUnlocked.wardrobe) {
@@ -77,9 +100,10 @@ const Wardrobe = () => {
     e.currentTarget.addEventListener('mouseleave', onMouseLeave)
   }
 
-  const obtainItem = () => {
-    setPuzzleUnlocked((prev) => ({ ...prev, shard1: true }))
-    setStartCompletion(true);
+  const obtainItem = (item: string) => {
+    if (puzzleUnlocked[`${item}Wardrobe`]) return;
+    addSidebarItem(item);
+    setPuzzleUnlocked((prev) => ({...prev, [`${item}Wardrobe`]: true}))
   }
 
 
@@ -91,18 +115,27 @@ const Wardrobe = () => {
 
   const showText = async () => {
     if (activeItem == 'firefly' || text == true) return;
-    console.log("hello")
     setText(true);
     await delay(1000);
     setText(false);
   }
 
   useEffect(() => {
+    if (puzzleUnlocked.wardrobeInside) return;
+    let newWardrobeContent = setWardrobeContent();
+    setWardrobeInsideState(newWardrobeContent);
+    if (newWardrobeContent == wardrobeInsideStates.complete) {
+      setPuzzleUnlocked((prev) => ({...prev, wardrobeInside: true}))
+      setStartCompletion(true);
+    }
+  }, [puzzleUnlocked])
+
+  useEffect(() => {
     if (!startCompletion) return;
     const completionTimer = setTimeout(() => {
       setStartCompletion(false);
-      setActiveItem("");
       removeSidebarItem("firefly");
+      setActiveItem("");
     }, 1000);
 
     return () => clearTimeout(completionTimer);
@@ -130,11 +163,12 @@ const Wardrobe = () => {
         <div className="wardrobe-inside-container" onMouseEnter={(e) => useLight(e)} onClick={showText}>
           <div className="wardrobe-inside"
             style={{
-              backgroundImage: `url(${wardrobeInsideImg})`,
+              backgroundImage: `url(${wardrobeInsideSpritesheet})`,
+              backgroundPosition: `-${wardrobeInsideState * 201.6}px 0px`,
               maskImage: activeItem == 'firefly' ? `url(${lightImg})` : '',
               WebkitMaskImage: activeItem == 'firefly' ? `url(${lightImg})` : '',
               maskPosition: activeItem == 'firefly' ? `${lightX}px ${lightY}px` : '',
-              display: (puzzleUnlocked.shard1 || (activeItem == "firefly" && lightX != null)) ? "block" : "none",
+              display: (puzzleUnlocked.wardrobeInside === true || (activeItem == "firefly" && lightX != null)) ? "block" : "none",
               opacity: startCompletion ? '0' : '1',
             }}></div>
 
@@ -142,11 +176,19 @@ const Wardrobe = () => {
             style={{ opacity: text ? 1 : 0 }}
           >Too dark...</div>
 
-          <div className="wardrobe-item"
-            style={{
-              display: activeItem == "firefly" ? "block" : "none"
-            }}
-            onClick={obtainItem}
+          <div className="wardrobe-key"
+            style={{display: activeItem == "firefly" ? "block" : "none"}}
+            onClick={() => obtainItem("ironKey")}
+          ></div>
+
+          <div className="wardrobe-bug"
+            style={{display: activeItem == "firefly" ? "block" : "none"}}
+            onClick={() => obtainItem("bug")}
+          ></div>
+
+          <div className="wardrobe-mushroom"
+            style={{display: activeItem == "firefly" ? "block" : "none"}}
+            onClick={() => obtainItem("mushroom")}
           ></div>
         </div>
       }
@@ -173,7 +215,7 @@ const Wardrobe = () => {
     //           <div
     //             className="black-screen"
     // style={{
-    //   backgroundImage: `url(${wardrobeInsideImg})`,
+    //   backgroundImage: `url(${wardrobeInsideSpritesheet})`,
     //   maskImage: activeItem == 'firefly' ? `url(${lightImg})` : '',
     //   WebkitMaskImage: activeItem == 'firefly' ? `url(${lightImg})` : '',
     //   maskPosition: activeItem == 'firefly' ? `${lightX}px ${lightY}px` : '',

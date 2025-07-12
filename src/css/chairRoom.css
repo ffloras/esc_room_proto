@@ -46,13 +46,31 @@
   transition: opacity 1s;
 }
 
-.wardrobe-item {
-  width: 50px;
-  height: 50px;
+.wardrobe-key {
+  width: 15px;
+  height: 35px;
   position: absolute;
   border: 1px solid red;
-  left: 100px;
-  top: 100px;
+  left: 135px;
+  top: 50px;
+}
+
+.wardrobe-bug {
+  width: 20px;
+  height: 15px;
+  position: absolute;
+  border: 1px solid red;
+  left: 175px;
+  top: 40px;
+}
+
+.wardrobe-mushroom {
+  width: 26px;
+  height: 25px;
+  position: absolute;
+  border: 1px solid red;
+  left: 165px;
+  top: 225px;
 }
 
 .wardrobe-dark-text {
@@ -75,4 +93,21 @@
   position: absolute;
   left: 535px;
   top: 215px;
+}
+
+.bird-bedroom {
+  position: absolute;
+  width: 74px;
+  height: 46px;
+  left: 560px;
+  top: 240px;
+}
+
+.food-message {
+  position: absolute;
+  width: 55px;
+  height: 50px;
+  left: 595px;
+  top: 180px;
+  transition: opacity 500ms;
 }

@@ -19,6 +19,7 @@
   align-items: center;
   gap: 13px;
   transition: margin 1s;
+  font-size: 13px;
 }
 
 .sidebar-arrow {

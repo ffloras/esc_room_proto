@@ -1,3 +1,12 @@
+.starBox-clickbox {
+  position: absolute;
+  border: 1px solid red;
+  width: 100px;
+  height: 55px;
+  left: 450px;
+  top: 40px;
+}
+
 .starBox-container {
   position: absolute;
   top: 92px;
@@ -27,10 +36,17 @@
   transition: top 0.5s;
 }
 
+.hammer {
+  position: absolute;
+  left: 80px;
+  top: 25px;
+  transform: rotate(220deg);
+}
+
 .clock {
   position: absolute;
   top: 20px;
-  left: 50px;
+  left: 30px;
 }
 
 .clock-top-clickbox {
@@ -77,29 +93,6 @@
  .clock-counter {
   width: 26px;
   height: 30px;
- }
-
- .bidirectional-counter {
-  position: absolute;
-  z-index: 10;
-  border: 2px solid black;
-  background-color: white;
-  border-radius: 3px;
- }
-
- .bidirectional-counter img {
-  height: 25%;
- }
-
- .bi-counter-screen {
-  width: 100%;
-  height: 40%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: white;
-  font-size: 14px;
-  cursor: default;
  }
 
  .clock-pointer-container {
@@ -194,15 +187,203 @@
  .clock-hour-sm {
   width: 2px;
   height: 10px;
-  left: 123px;
+  left: 103px;
   top: 135px;
  }
 
  .clock-minute-sm {
   width: 2px;
   height: 15px;
-  left: 123px;
+  left: 103px;
   top: 130px;
  }
 
+  .book0-clickbox {
+  position: absolute;
+  width: 50px;
+  height: 70px;
+  left: 530px;
+  top: 123px;
+  border: 1px solid red;
+ }
 
+ .book1-clickbox {
+  position: absolute;
+  width: 50px;
+  height: 70px;
+  left: 585px;
+  top: 123px;
+  border: 1px solid red;
+ }
+
+ .book-top-page {
+  position: absolute;
+  left: 344px;
+  top: 80px;
+  width: 243px;
+  height: 300px;
+  /* border: 1px solid red; */
+ }
+
+ .book-left-page {
+  position: absolute;
+  left: 98px;
+  top: 80px;
+  width: 243px;
+  height: 300px;
+ }
+
+ .book-cut-section {
+  position: absolute;
+  border: 1px solid red;
+ }
+
+ .book-reset-button {
+  position: absolute;
+  cursor: pointer;
+  left: 625px;
+  top: 352px;
+  border: 2px solid black;
+  border-radius: 50%;
+ }
+
+ .book-page-cutout {
+  position: absolute;
+ }
+
+ .crossword-clickbox {
+  position: absolute;
+  width: 170px;
+  height: 140px;
+  left: 190px;
+  top: 140px;
+  border: 1px solid red;
+ }
+
+ .crossword-paper {
+  position: absolute;
+  cursor: pointer;
+ }
+
+ .crossword-paper-horizontal {
+  background-image: url('/src/assets/img/subscenes/clockRoom/crosswordPapersHorizontal255x45.png')
+ }
+
+ .moonBox-clickbox {
+  position: absolute;
+  width: 80px;
+  height: 50px;
+  left: 460px;
+  top: 340px;
+  border: 1px solid red;
+ }
+
+ .moonBox-container {
+  position: absolute;
+  width: 395px;
+  height: 315px;
+  top: 50px;
+  left: 145px;
+ }
+
+ .moonBox-counters {
+  font-size: 42px;
+  top: 150px;
+  width: 50px;
+ }
+
+ .moonBox-counter0 {
+  left: 68px;
+ }
+
+ .moonBox-counter1 {
+  left: 137px;
+ }
+
+ .moonBox-counter2 {
+  left: 207px;
+ }
+
+ .moonBox-counter3 {
+  left: 277px;
+ }
+
+ .emerald-moonBox {
+  position: absolute;
+  left: 165px;
+  top: 135px;
+ }
+
+ .safe-clickbox {
+  position: absolute;
+  width: 85px;
+  height: 90px;
+  border: 1px solid red;
+  left: 550px;
+  top: 300px;
+ }
+
+ .safe {
+  position: absolute;
+  width: 350px;
+  height: 340px;
+  left: 130px;
+  top: 50px;
+ }
+
+ .safe-lock {
+  position: absolute;
+  width: 96px;
+  height: 40px;
+  left: 292px;
+  top: 231px;
+  transition: transform 1s;
+ }
+
+ .safe-counters {
+    width: 30px;
+    height: 74px;
+    top: 115px;
+ }
+
+ .safe-counter-0 {
+    left: 274px;
+ }
+
+ .safe-counter-1 {
+    left: 324px;
+ }
+
+ .safe-counter-2 {
+    left: 374px;
+ }
+
+ .mirror-fragment-2 {
+    position: absolute;
+    left: 265px;
+    top: 144px;
+    transform: rotate(3deg);
+ }
+
+.wall-patch {
+  background-image: url('/src/assets/img/subscenes/clockRoom/wallPatch83x44.png');
+  position: absolute;
+  width: 83px;
+  height: 44px;
+  left: 210px;
+  top: 345px;
+}
+
+.wall-patch-closed {
+  background-position: 0px 0px;
+}
+
+.wall-patch-open {
+  background-position: -83px 0px;
+}
+
+.wall-acorn {
+  position: absolute;
+  left: 245px;
+  top: 363px;
+}

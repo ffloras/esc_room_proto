@@ -115,6 +115,11 @@
   /* background-color: blue; */
 }
 
+.desk-bird {
+  left: 100px;
+  top: 203px;
+}
+
 .desk-top-drawer {
   position:  absolute;
   left: 189px;
@@ -144,4 +149,19 @@
   left: 32px;
   width: 58px;
   height: 25px;
+}
+
+.maze {
+  position: absolute;
+  z-index: 0;
+}
+
+.maze-birdprint {
+  position: absolute;
+}
+
+.maze-bird {
+  position: absolute;
+  left: 30px;
+  top: 270px;
 }

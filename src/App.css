@@ -68,3 +68,21 @@
   user-drag: none;
   -webkit-user-drag: none;
 }
+
+ .bidirectional-counter {
+  position: absolute;
+  z-index: 10;
+ }
+
+ .bi-counter-screen {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  cursor: default;
+  border-radius: 3px;
+  padding: 20% 0 20% 0;
+  border: 4px solid black;
+ }

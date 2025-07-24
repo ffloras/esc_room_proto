@@ -21,10 +21,16 @@ import Maze from "../components/scenes/MirrorRoom/Maze";
 //Clock Room subscenes
 import starBoxImg from '../assets/img/subscenes/clockRoom/starBox.png'
 import StarBox from "../components/scenes/ClockRoom/StarBox";
+import Book1 from "../components/scenes/ClockRoom/Book1";
+import Book0 from "../components/scenes/ClockRoom/Book0";
+import Crossword from "../components/scenes/ClockRoom/Crossword";
+import MoonBox from "../components/scenes/ClockRoom/MoonBox";
+import Safe from "../components/scenes/ClockRoom/Safe";
 
 //Chair Room subscenes
 import flowerDrawerImg from "../assets/img/subscenes/chairRoom/flowerDrawer.png"
 import Wardrobe from "../components/scenes/ChairRoom/Wardrobe";
+import BookClue from "../components/scenes/ChairRoom/BookClue";
 
 //Painting Room subscenes
 //import wardrobeImg from "../assets/img/subscenes/paintingRoom/wardrobeLocked.png"
@@ -38,7 +44,7 @@ type StagesProp = {
 }
 
 type ScenesProp = {
-  [key: string] : ComponentType;
+  [key: string]: ComponentType<any>;
 }
 
 export const Stages: StagesProp = {
@@ -57,11 +63,17 @@ export const Stages: StagesProp = {
     starBox: StarBox,
     clockBottom: ClockBottom,
     clockTop: ClockTop,
+    book0: Book0,
+    book1: Book1,
+    crossword: Crossword,
+    moonBox: MoonBox,
+    safe: Safe,
   },
   2: 
   {
     main: ChairRoom,
     wardrobe: Wardrobe,
+    bookClue: BookClue,
   },
   3: 
   {

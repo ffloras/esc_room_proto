@@ -12,18 +12,20 @@ type imgStatesProp = {
 const Bird = () => {
   const birdStates: imgStatesProp = {
     default: 0,
-    chirp: 1,
+    flapUp: 1,
     seeds: 2,
-    berry: 3,
+    acorn: 3,
     mushroom: 4,
     bug: 5,
+    flapDown: 6, 
   }
 
   const messageStates: imgStatesProp= {
     seeds: 0,
-    berry: 1,
+    acorn: 1,
     mushroom: 2,
     bug: 3,
+    default: 4,
   }
 
 
@@ -33,15 +35,14 @@ const Bird = () => {
   const [showMessage, setShowMessage] = useState<boolean>(false);
   const {activeItem, setActiveItem} = use(ActiveItemContext);
   const {removeSidebarItem} = use(ItemsContext);
+  const [isFlying, setIsFlying] = useState<boolean>(false);
 
   function getFoodStatus() {
-    if (puzzleUnlocked.seedsBird === false) {
-      return "seeds";
-    } 
-    if (!puzzleUnlocked.berryBird) return "berry";
+    if (!puzzleUnlocked.seedsBird) return "seeds";
+    if (!puzzleUnlocked.acornBird) return "acorn";
     if (!puzzleUnlocked.mushroomBird) return "mushroom";
     if (!puzzleUnlocked.bugBird) return "bug";
-    else return "";
+    else return "default";
   }
 
   
@@ -51,10 +52,12 @@ const Bird = () => {
       setBirdState(currentFood);
       await delay(700);
       setBirdState("default");
+      await delay(500);
     }
 
     const chirp = async () => {
-      setBirdState("chirp");
+      if (showMessage) return;
+      setBirdState("flapUp");
       setShowMessage(true);
       await delay(500);
       setBirdState("default");
@@ -62,10 +65,11 @@ const Bird = () => {
     }
 
     if (activeItem === currentFood) {
-      eat();
+      await eat();
       setPuzzleUnlocked((prev) => ({...prev, [`${currentFood}Bird`]: true}));
+      removeSidebarItem(currentFood);
+      await chirp();
       setActiveItem(null);
-      removeSidebarItem('seeds')
     } else {
       chirp();
     }
@@ -73,10 +77,30 @@ const Bird = () => {
 
   useEffect(() => {
     setCurrentFood(getFoodStatus());
+    if (puzzleUnlocked.bugBird && !puzzleUnlocked.birdComplete) {
+      setIsFlying(true);
+    }
   }, [puzzleUnlocked])
 
+  useEffect(() => {
+    const fly = async () => {
+      for (let i = 0; i < 4; i++) {
+        setBirdState("flapUp");
+        await delay(300);
+        setBirdState("flapDown");
+        await delay(300);
+      }
+      //setIsFlying(false);
+      setPuzzleUnlocked((prev) => ({...prev, birdComplete: true}))
+    }
+
+    if (isFlying) {
+      fly();
+    }
+  }, [isFlying])
+
   return (
-    <>
+    <div className={`bird-container ${isFlying ? 'bird-fly' : ''} ${puzzleUnlocked.birdComplete ? 'bird-complete' : ''}`}>
       <div className="bird-bedroom"
         style={{
           backgroundImage: `url(${birdSpritesheet})`,
@@ -91,7 +115,7 @@ const Bird = () => {
           opacity: showMessage ? 1 : 0,
         }}
       ></div>
-    </>
+    </div>
   )
 }
 

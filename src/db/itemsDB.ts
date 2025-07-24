@@ -5,12 +5,19 @@ import coPotionImg from "../assets/img/items/flowerCoUnselected.png"
 import fireflyImg from "../assets/img/items/firefly.png"
 import paintingKeyImg from "../assets/img/items/key.png"
 import mirrorFragment1 from "../assets/img/items/mirrorPiece1.png"
+import mirrorFragment2 from '../assets/img/items/mirrorPieceSafe.png'
 import crowbarImg from '../assets/img/items/crowbar.png'
 import brassKeyImg from '../assets/img/items/brassKey.png'
 import ironKeyImg from '../assets/img/items/progressKey.png'
 import seedImg from '../assets/img/items/seedsItem.png'
 import mushroomImg from '../assets/img/items/mushroom.png'
 import bugImg from '../assets/img/items/beetle.png'
+import emeraldImg from '../assets/img/items/emerald.png'
+import scissorsImg from '../assets/img/items/scissors.png'
+import hammerImg from '../assets/img/items/hammer.png'
+import acornImg from '../assets/img/items/acorn.png'
+
+  
 
 export const ItemsContainer = {
   height: 70,
@@ -98,6 +105,12 @@ export const Items: ItemsProp = {
     isObtained: false,
     zindex: 0,
   },
+  mirrorFragment2: {
+    name: "Mirror Piece",
+    img: mirrorFragment2,
+    isObtained: false,
+    className: "mirror-fragment-2"
+  },
   brassKey: {
     name: "Brass Key",
     img: brassKeyImg,
@@ -123,6 +136,30 @@ export const Items: ItemsProp = {
     name: "seeds",
     img: seedImg,
     isObtained: false,
+  },
+  acorn: {
+    name: "Acorn",
+    img: acornImg,
+    isObtained: false,
+    className: "wall-acorn"
+  },
+  emerald: {
+    name: "Emerald",
+    img: emeraldImg,
+    isObtained: false,
+    className: "emerald-moonBox"
+  },
+  scissors: {
+    name: "Scissors",
+    img: scissorsImg,
+    isObtained: false,
+    className: "scissors"
+  },
+  hammer: {
+    name: "Hammer",
+    img: hammerImg,
+    isObtained: false,
+    className: "hammer",
   }
 
 }

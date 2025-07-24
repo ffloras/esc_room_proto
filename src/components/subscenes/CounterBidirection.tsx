@@ -1,30 +1,42 @@
-import React, { type FC } from 'react'
+import { use, type FC } from 'react'
 import arrowImg from '../../assets/img/counterArrow.png'
+import { PuzzleContext } from '../../contexts/PuzzleContext'
 
 type CounterBidirectionProp = {
-  counterList: string[];
+  range: number;
   className: string;
-  count: number[];
-  setCount: React.Dispatch<React.SetStateAction<number[]>>;
   position: number;
+  img: string | null;
+  puzzle: string;
+  width: number | null;
 }
 
-const CounterBidirection: FC<CounterBidirectionProp> = ({counterList, className, count, setCount, position}) => {
+const CounterBidirection: FC<CounterBidirectionProp> = ({range, className, position, img, puzzle, width}) => {
+  const {puzzleUnlocked, puzzleState, setPuzzleState} = use(PuzzleContext);
 
   const changeCount = (direction: string) => {
-    let length = counterList.length;
+    if (puzzleUnlocked[puzzle]) return;
+ 
     if (direction == "up") {
-      setCount((prev) => (prev.map((num, index) => index === position ? ++num % length : num)));
+      setPuzzleState((prev) => ({...prev, [puzzle]: prev[puzzle].map((num, index) => index === position ? ++num % range : num)}));
     }
     if (direction == "down") {
-      setCount((prev) => (prev.map((num, index) => index === position ? (num + length - 1) % length : num)))
+      setPuzzleState((prev) => ({...prev, [puzzle]: prev[puzzle].map((num, index) => index === position ? (num + range - 1) % range : num)}))
     }
   }
 
   return (
     <div className={`bidirectional-counter center-col ${className}`}>
       <img src={arrowImg} alt="up arrow" onClick={() => changeCount("up")}/>
-      <div className='bi-counter-screen'>{counterList[count[position]]}</div>
+      <div className='bi-counter-screen'
+        style={{
+          backgroundImage: img ? `url(${img})` : undefined,
+          backgroundPosition: (img && width) ? `-${width * puzzleState[puzzle][position]}px 0px` : undefined,
+          
+        }}
+      >
+        {img ? "" : puzzleState[puzzle][position]}
+      </div>
       <img src={arrowImg} alt="down arrow" style={{rotate: '180deg'}} onClick={() => changeCount("down")}/>
 
     </div>

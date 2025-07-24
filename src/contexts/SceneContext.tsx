@@ -17,6 +17,7 @@ type SceneContextType = {
   scene: sceneProvider;
   setCurrentScene: (scene: string) => void;
   setPrevScene: (scene: string) => void;
+  changeScene: (next: string, prev: string) => void;
 }
 
 export const SceneContext = createContext<SceneContextType>({
@@ -26,6 +27,7 @@ export const SceneContext = createContext<SceneContextType>({
   scene: {current: "", prev: ""},
   setCurrentScene: () => {},
   setPrevScene: () => {},
+  changeScene: () => {},
 })
 
 type SceneProviderType = {
@@ -60,6 +62,11 @@ export const SceneProvider: FC<SceneProviderType> = ({children}) => {
     setScene((prev) => ({...prev, prev: scene}))
   }
 
+  const changeScene = (next: string, prev: string) => {
+    setCurrentScene(next);
+    setPrevScene(prev);
+  }
+
   const changeStage = (direction: string) => {
     switch (direction) {
       case "up":
@@ -80,7 +87,7 @@ export const SceneProvider: FC<SceneProviderType> = ({children}) => {
   }
 
   return (
-    <SceneContext.Provider value={{stage, start, changeStage, scene, setCurrentScene, setPrevScene}}>
+    <SceneContext.Provider value={{stage, start, changeStage, scene, setCurrentScene, setPrevScene, changeScene}}>
       {children}
     </SceneContext.Provider>
   )

@@ -21,7 +21,7 @@ type TimeProviderProp = {
 
 export const TimeProvider: FC<TimeProviderProp>= ({children}) => {
   const [time, setTime] = useState<timeProp>({hour: 5, minute: 10});
-  const [moonTime, setMoonTime] = useState("halfMoon");
+  const [moonTime, setMoonTime] = useState("crescentMoon");
 
   const changeTime = (time: number, type: string) => {
     setTime((prev) => ({...prev, [type]: time}))

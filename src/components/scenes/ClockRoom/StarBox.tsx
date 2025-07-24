@@ -106,6 +106,7 @@ const StarBox = () => {
       >
         <img src={`${starBoxDrawerImg}`} alt="starbox drawer" />
         <BasicItem name="gear"/>
+        <BasicItem name="hammer"/>
       </div>
       <MainDirectionButton direction='down' />
     </div>

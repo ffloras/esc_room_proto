@@ -18,10 +18,10 @@ const Window = () => {
 
   const windowStates: windowStatesProp = {
     boarded: 0,
-    newMoon: 1,
-    crescentMoon: 2,
-    halfMoon: 3,
-    fullMoon: 4,
+    fullMoon: 1,
+    halfMoon: 2,
+    crescentMoon: 3,
+    newMoon: 4,
   }
 
   const removeBoard = () => {
@@ -43,7 +43,7 @@ const Window = () => {
       onClick={removeBoard}
       style={{
         backgroundImage: `url(${windowSpritesheet})`,
-        backgroundPosition: `-${windowState * 280}px 0px`,
+        backgroundPosition: `-${windowState * 251}px 0px`,
       }}
       >
     </div>

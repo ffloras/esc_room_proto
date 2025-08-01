@@ -8,19 +8,33 @@ import { PuzzleContext } from '../../../contexts/PuzzleContext';
 import resetImg from '../../../assets/img/reset.png'
 
 const ClockBottom = () => {
-  const {puzzleUnlocked, setPuzzleUnlocked} = use(PuzzleContext);
+  const {puzzleUnlocked, unlockPuzzle, puzzleState, setPuzzleState} = use(PuzzleContext);
   const [showItem, setShowItem] = useState<boolean>(false);
-  const [ansPosition, setAnsPosition] = useState<number>(0);
   const [rotation, setRotation] = useState<number>(0);
   const [pointerReturning, setpointerReturning] = useState<boolean>(false);
 
   const ansKey = [7, 2, 8, 3, 5, 11, 6, 10];
-  const ansInitial = [null, null, null, null, null, null, null, null];
-  const [ans, setAns] = useState<(number | null)[]>(ansInitial);
+  const ansInitial: number[] = [-1, -1, -1, -1, -1, -1, -1, -1];
+  const ansMap: Record<number, string> = {
+    0: 'XII',
+    1: 'I',
+    2: 'II',
+    3: 'III',
+    4: 'IV',
+    5: 'V',
+    6: 'VI',
+    7: 'VII',
+    8: 'VIII',
+    9: 'IX',
+    10: 'X',
+    11: 'XI',
+  }
 
   const addToAns = (newAns: number) => {
-    setAns((prev) => (prev.map((prevAns, index) => index == ansPosition ? newAns : prevAns)));
-    setAnsPosition((prev) => prev + 1);
+    setPuzzleState((prev) => ({...prev, 
+      clockBottom: prev.clockBottom.map((prevAns, index) => index == puzzleState.clockBottomPosition[0] ? newAns : prevAns),
+      clockBottomPosition: [prev.clockBottomPosition[0] + 1]
+    }))
   }
 
   const calculateDeg = (mouseX: number, mouseY: number, originX: number, originY: number): number => {
@@ -67,23 +81,21 @@ const ClockBottom = () => {
   // }, [rotation])
 
   const reset = () => {
-    setAns(ansInitial);
-    setAnsPosition(0);
+    setPuzzleState((prev) => ({...prev, clockBottom: ansInitial, clockBottomPosition: [0]}));
   }
 
   useEffect(() => {
-    if (ansPosition < ans.length) return;
-    if (JSON.stringify(ans) === JSON.stringify(ansKey)) {
-      setPuzzleUnlocked((prev) => ({...prev, clockBottom: true}));
+    if (puzzleState.clockBottomPosition[0] < ansKey.length) return;
+    if (JSON.stringify(ansKey) === JSON.stringify(puzzleState.clockBottom)) {
+      unlockPuzzle("clockBottom");
       const itemTimer = setTimeout(() => {
         setShowItem(true);
       }, 1000);
       return () => clearTimeout(itemTimer);
     } else {
-      setAns(ansInitial);
-      setAnsPosition(0);
+      setPuzzleState((prev) => ({...prev, clockBottom: ansInitial, clockBottomPosition: [0]}))
     }
-  }, [ansPosition])
+  }, [puzzleState.clockBottomPosition])
 
   useEffect(() => {
     const pointerTimer = setTimeout(() => {
@@ -132,13 +144,13 @@ const ClockBottom = () => {
         top: puzzleUnlocked.clockBottom ?  '300px' : '355px',
         zIndex: showItem ? '-3' : '2',
       }}>
-        {ans.map((ansSegment, index) => (
-          <div className="clock-ans-slot" key={index} 
+        {puzzleState.clockBottom.map((ansSegment, index) => (
+          <div className="clock-ans-slot oswald-font" key={index} 
             style={{ 
-              left: `${index * 20 + 10}px`,
-              backgroundColor: ansSegment == null ? 'white' : 'gray',
+              left: `${index * 24 + 10}px`,
+              backgroundColor: ansSegment == -1 ? 'white' : '#a1a1a1ff',
             }}
-          ></div>
+          >{(puzzleState.clockBottom[index] != -1 ? ansMap[puzzleState.clockBottom[index]] : "")}</div>
         ))}
         <div className="clock-reset-button" style={{backgroundImage: `url(${resetImg})`}}
         ></div>

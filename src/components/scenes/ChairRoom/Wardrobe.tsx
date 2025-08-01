@@ -42,7 +42,7 @@ const Wardrobe = () => {
   //   Mushroom: false,
   // }
 
-  const { puzzleUnlocked, setPuzzleUnlocked} = use(PuzzleContext);
+  const { puzzleUnlocked, unlockPuzzle} = use(PuzzleContext);
 
   const [lightX, setLightX] = useState<number | null>(null);
   const [lightY, setLightY] = useState<number | null>(null);
@@ -68,7 +68,7 @@ const Wardrobe = () => {
 
   const openWardrobe = () => {
     if (activeItem == "paintingKey" && !puzzleUnlocked.wardrobe) {
-      setPuzzleUnlocked((prev) => ({ ...prev, wardrobe: true }));
+      unlockPuzzle("wardrobe");
       setWardrobeState(wardrobeStates.unlockedClosed);
       setActiveItem(null);
       removeSidebarItem("paintingKey");
@@ -103,7 +103,7 @@ const Wardrobe = () => {
   const obtainItem = (item: string) => {
     if (puzzleUnlocked[`${item}Wardrobe`]) return;
     addSidebarItem(item);
-    setPuzzleUnlocked((prev) => ({...prev, [`${item}Wardrobe`]: true}))
+    unlockPuzzle(`${item}Wardrobe`);
   }
 
 
@@ -125,7 +125,7 @@ const Wardrobe = () => {
     let newWardrobeContent = setWardrobeContent();
     setWardrobeInsideState(newWardrobeContent);
     if (newWardrobeContent == wardrobeInsideStates.complete) {
-      setPuzzleUnlocked((prev) => ({...prev, wardrobeInside: true}))
+      unlockPuzzle("wardrobeInside");
       setStartCompletion(true);
     }
   }, [puzzleUnlocked])

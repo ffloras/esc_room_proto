@@ -8,7 +8,7 @@ import { delay } from '../../../generalFunctions'
 import BasicItem from '../../items/BasicItem'
 
 const MoonBox = () => {
-  const { puzzleUnlocked, setPuzzleUnlocked, puzzleState} = use(PuzzleContext);
+  const { puzzleUnlocked, unlockPuzzle, puzzleState} = use(PuzzleContext);
   let counters = [];
   let ans = [1, 2, 5, 6];
 
@@ -20,7 +20,7 @@ const MoonBox = () => {
     async function solveMoonBox() {
       if (JSON.stringify(puzzleState.moonBox) === JSON.stringify(ans)) {
         await delay(200);
-        setPuzzleUnlocked((prev) => ({ ...prev, moonBox: true }))
+        unlockPuzzle("moonBox");
       }
     }
     solveMoonBox();

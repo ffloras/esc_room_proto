@@ -12,12 +12,13 @@ type imgStatesProp = {
 const Bird = () => {
   const birdStates: imgStatesProp = {
     default: 0,
-    flapUp: 1,
+    chirp: 1,
     seeds: 2,
     acorn: 3,
     mushroom: 4,
     bug: 5,
     flapDown: 6, 
+    flapUp: 7,
   }
 
   const messageStates: imgStatesProp= {
@@ -29,7 +30,7 @@ const Bird = () => {
   }
 
 
-  const {puzzleUnlocked, setPuzzleUnlocked} = use(PuzzleContext);
+  const {puzzleUnlocked, unlockPuzzle} = use(PuzzleContext);
   const [currentFood, setCurrentFood] = useState<string>(getFoodStatus())
   const [birdState, setBirdState] = useState<string>("default");
   const [showMessage, setShowMessage] = useState<boolean>(false);
@@ -57,7 +58,7 @@ const Bird = () => {
 
     const chirp = async () => {
       if (showMessage) return;
-      setBirdState("flapUp");
+      setBirdState("chirp");
       setShowMessage(true);
       await delay(500);
       setBirdState("default");
@@ -66,19 +67,24 @@ const Bird = () => {
 
     if (activeItem === currentFood) {
       await eat();
-      setPuzzleUnlocked((prev) => ({...prev, [`${currentFood}Bird`]: true}));
+      unlockPuzzle(`${currentFood}Bird`);
       removeSidebarItem(currentFood);
-      await chirp();
       setActiveItem(null);
+      await chirp();
     } else {
-      chirp();
+      await chirp();
     }
   }
 
   useEffect(() => {
+    const startFlying = async () => {
+      await delay(800);
+      setIsFlying(true);
+    }
+
     setCurrentFood(getFoodStatus());
     if (puzzleUnlocked.bugBird && !puzzleUnlocked.birdComplete) {
-      setIsFlying(true);
+      startFlying();
     }
   }, [puzzleUnlocked])
 
@@ -91,7 +97,7 @@ const Bird = () => {
         await delay(300);
       }
       //setIsFlying(false);
-      setPuzzleUnlocked((prev) => ({...prev, birdComplete: true}))
+      unlockPuzzle("birdComplete");
     }
 
     if (isFlying) {

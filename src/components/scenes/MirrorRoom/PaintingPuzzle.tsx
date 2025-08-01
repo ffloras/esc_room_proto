@@ -11,7 +11,7 @@ import BasicItem from '../../items/BasicItem'
 import LoadingScreen from '../../mainGame/LoadingScreen'
 
 const PaintingPuzzle = () => {
-  const{puzzleUnlocked, setPuzzleUnlocked, puzzleState} = use(PuzzleContext);
+  const{puzzleUnlocked, unlockPuzzle, puzzleState} = use(PuzzleContext);
   const [openImgLoaded, setOpenImgLoaded] = useState<boolean>(false);
 
   const maxSymbolCount = 7;
@@ -21,7 +21,7 @@ const PaintingPuzzle = () => {
   //check and set puzzle completion
   useEffect(() => {
     if (JSON.stringify(ans) === JSON.stringify(puzzleState.paintingBox)) {
-      setPuzzleUnlocked((prev) => ({...prev, paintingBox: true}))
+      unlockPuzzle("paintingBox");
     }
   }, [puzzleState])
 

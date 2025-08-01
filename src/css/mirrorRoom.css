@@ -17,10 +17,42 @@
   left: 208px;
   top: 47px;
   z-index: 15;
-  border: 1px solid pink;
   width: 260px;
   height: 340px;
 }
+
+.mirror-surface {
+  position: absolute;
+  left: 216px;
+  top: 56px;
+  width: 247px;
+  height: 326px;
+}
+
+.mirror-door {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.mirror-door-clickbox {
+  position: absolute;
+  width: 135px;
+  height: 235px;
+  top: 43px;
+  left: 55px;
+  z-index: 15;
+}
+
+.transition-screen {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: opacity 1.5s;
+  background-color: white;
+  z-index: 9;
+}
+
 
 .mirror-fragment1 {
   position: absolute;
@@ -36,9 +68,9 @@
   z-index: 5;
   width: 160px;
   height: 210px;
-  left: 313px;
-  top: 38px;
-  background-position: 160px 0px;
+  left: 209px;
+  top: 200px;
+  background-position: -160px 0px;
 }
 
 .mirror-fragment3 {
@@ -46,9 +78,9 @@
   z-index: 5;
   width: 160px;
   height: 210px;
-  left: 209px;
-  top: 200px;
-  background-position: 320px 0px;
+  left: 313px;
+  top: 38px;
+  background-position: -320px 0px;
 }
 
 .painting-box {
@@ -146,9 +178,11 @@
 
 .completion-paper-clickbox {
   position: absolute;
-  left: 32px;
-  width: 58px;
-  height: 25px;
+  left: 40px;
+  top: 14px;
+  width: 25px;
+  height: 10px;
+  border: 1px solid red;
 }
 
 .maze {
@@ -164,4 +198,18 @@
   position: absolute;
   left: 30px;
   top: 270px;
+}
+
+.progress-tag {
+  position: absolute;
+  left: 90px;
+  top: 135px;
+}
+
+.progress-text {
+  position: absolute;
+  left: 260px;
+  top: 170px;
+  font-size: 30px;
+  line-height: 1.4;
 }

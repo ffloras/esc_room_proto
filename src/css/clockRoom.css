@@ -1,3 +1,4 @@
+
 .starBox-clickbox {
   position: absolute;
   border: 1px solid red;
@@ -67,25 +68,25 @@
 
  .clock-star-puzzle {
   position: absolute;
-  left: 205px;
+  left: 194px;
  }
 
  .sliding-door-background {
   position: absolute;
-  width: 225px;
+  width: 240px;
   height: 70px;
   background-color:rgb(40, 40, 40);
-  left: 230px;
+  left: 220px;
   bottom: 25px;
   z-index: -10;
  }
 
   .sliding-door {
   position: absolute;
-  width: 220px;
+  width: 240px;
   height: 55px;
   background-color:rgb(255, 255, 255);
-  left: 230px;
+  left: 220px;
   transition: top 1s;
   border: 3px solid black;
  }
@@ -119,10 +120,12 @@
 
  .clock-ans-slot {
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 25px;
   top: 15px;
   border: 2px solid black;
+  font-size: 15px;
+  text-align: center;
  }
 
  .clock-reset-button {
@@ -131,9 +134,10 @@
   height: 20px;
   border: 2px solid black;
   border-radius: 50%;
-  left: 185px;
-  top: 15px;
+  left: 209px;
+  top: 17px;
   background-size: cover;
+  
  }
 
  .clock-reset-button-clickbox {
@@ -141,9 +145,10 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  left: 418px;
-  top: 373px;
+  left: 434px;
+  top: 375px;
   z-index: 10;
+  cursor: pointer;
  }
 
  .clock-top {
@@ -310,8 +315,8 @@
 
  .emerald-moonBox {
   position: absolute;
-  left: 165px;
-  top: 135px;
+  left: 137px;
+  top: 108px;
  }
 
  .safe-clickbox {

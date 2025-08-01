@@ -10,7 +10,7 @@ import { delay } from "../../../generalFunctions"
 import BasicItem from "../../items/BasicItem"
 
 const Safe = () => {
-  const { puzzleUnlocked, setPuzzleUnlocked, puzzleState } = use(PuzzleContext);
+  const { puzzleUnlocked, unlockPuzzle, puzzleState } = use(PuzzleContext);
   const counters = [];
   const ans = [4, 5, 7];
 
@@ -28,9 +28,9 @@ const Safe = () => {
 
   useEffect(() => {
     const rotateLock = async () => {
-      setPuzzleUnlocked((prev) => ({ ...prev, safeUnlock: true }));
+      unlockPuzzle("safeUnlock");
       await delay(1000);
-      setPuzzleUnlocked((prev) => ({ ...prev, safeOpen: true }));
+      unlockPuzzle("safeOpen");
     }
 
     if (JSON.stringify(puzzleState.safeUnlock) == JSON.stringify(ans)) {
@@ -54,7 +54,7 @@ const Safe = () => {
           transform: puzzleUnlocked.safeUnlock ? 'rotate(-180deg)' : 'rotate(0deg)'
         }}>
       </div>}
-      {puzzleUnlocked.safeOpen && <BasicItem name="mirrorFragment2"/>}
+      {puzzleUnlocked.safeOpen && <BasicItem name="mirrorFragment3"/>}
       <MainDirectionButton direction="down" />
     </div>
   )

@@ -14,14 +14,14 @@ import BasicItem from "../../items/BasicItem"
 const ClockRoom = () => {
   const {time} = use(TimeContext);
   const {changeScene} = use(SceneContext);
-  const {puzzleUnlocked, setPuzzleUnlocked} = use(PuzzleContext);
+  const {puzzleUnlocked, unlockPuzzle} = use(PuzzleContext);
   const {activeItem, setActiveItem} = use(ActiveItemContext);
   const {removeSidebarItem} = use(ItemsContext);
 
   const breakWall = () => {
     if (puzzleUnlocked.wallPatch) return; 
     if (activeItem == "hammer") {
-      setPuzzleUnlocked((prev) => ({...prev, wallPatch: true}));
+      unlockPuzzle("wallPatch");
       setActiveItem("");
       removeSidebarItem("hammer");
     }

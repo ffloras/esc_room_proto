@@ -28,7 +28,7 @@ const Desk = () => {
     bottomOpen: 3,
   }
 
-  const {puzzleUnlocked, setPuzzleUnlocked} =use(PuzzleContext);
+  const {puzzleUnlocked, unlockPuzzle} =use(PuzzleContext);
   const {activeItem, setActiveItem} = use(ActiveItemContext);
   const {removeSidebarItem, addSidebarItem} = use(ItemsContext);
   const {setCurrentScene, setPrevScene} = use(SceneContext);
@@ -46,7 +46,7 @@ const Desk = () => {
   const useTopDrawer = async () => {
     if (activeItem == 'brassKey' && topDrawer == drawerStates.locked) {
       setTopDrawer(drawerStates.unlocked);
-      setPuzzleUnlocked((prev) => ({...prev, deskDrawerTop: true}))
+      unlockPuzzle("deskDrawerTop");
       removeSidebarItem('brassKey');
       setActiveItem(null);
     } else if (topDrawer == drawerStates.locked) {
@@ -61,7 +61,7 @@ const Desk = () => {
   const useBottomDrawer = () => {
     if (activeItem == 'ironKey' && bottomDrawer == drawerStates.locked) {
       setBottomDrawer(drawerStates.unlocked);
-      setPuzzleUnlocked((prev) => ({...prev, deskDrawerBottom: true}))
+      unlockPuzzle("deskDrawerBottom");
       removeSidebarItem('ironKey');
       setActiveItem(null);
     } else if (bottomDrawer == drawerStates.locked) {
@@ -80,7 +80,7 @@ const Desk = () => {
 
   const obtainSeeds = () => {
     addSidebarItem("seeds");
-    setPuzzleUnlocked((prev) => ({...prev, obtainSeeds: true}))
+    unlockPuzzle("obtainSeeds");
   }
 
   return (

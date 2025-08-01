@@ -30,8 +30,8 @@ type PuzzleContextProp = {
   setPuzzleState: React.Dispatch<React.SetStateAction<puzzleStateProp>>;
   bookCutouts: bookCutoutsProp;
   setBookCutouts: React.Dispatch<React.SetStateAction<bookCutoutsProp>>;
-  // puzzleNums: puzzleNumsProp;
-  // setPuzzleNums: React.Dispatch<React.SetStateAction<puzzleNumsProp>>;
+  totalPuzzlesCompleted: number;
+  unlockPuzzle: (puzzleName: string) => void;
 }
 
 export const PuzzleContext = createContext<PuzzleContextProp>({
@@ -41,8 +41,8 @@ export const PuzzleContext = createContext<PuzzleContextProp>({
   setPuzzleState: () => {},
   bookCutouts: {},
   setBookCutouts: () => {},
-  // puzzleNums: {},
-  // setPuzzleNums: () => {},
+  totalPuzzlesCompleted: 0,
+  unlockPuzzle: () => {},
 })
 
 type PuzzleProviderProp = {
@@ -63,7 +63,7 @@ export const PuzzleProvider: FC<PuzzleProviderProp> = ({children}) => {
     clockBottom: false,
     windowBoard: false,
     deskDrawerTop: false,
-    deskDrawerBottom: false,
+    deskDrawerBottom: true,
     obtainSeeds: false,
     seedsBird: false,
     acornBird: false,
@@ -88,15 +88,22 @@ export const PuzzleProvider: FC<PuzzleProviderProp> = ({children}) => {
     kore: true,
     safeUnlock: false,
     safeOpen: false,
-    mirrorFragment1: false,
-    mirrorFragment2: false,
+    sunBoxLeft: false,
+    sunBoxRight: false,
+    mirrorFragment1: true,
+    mirrorFragment2: true,
     mirrorFragment3: false,
+    mirrorComplete: false,
+    door: false,
   }
 
   const initialPuzzleState: puzzleStateProp = {
     paintingBox: [0, 0, 0, 0, 0],
     moonBox: [0, 0, 0, 0],
     safeUnlock: [0, 0, 0],
+    clockBottom: [-1, -1, -1, -1, -1, -1, -1, -1],
+    clockBottomPosition: [0],
+    ceilingRotation: [0],
     atlas: [435, 170],
     thebe: [485, 71],
     aegir: [510, 120],
@@ -116,10 +123,20 @@ export const PuzzleProvider: FC<PuzzleProviderProp> = ({children}) => {
   const [puzzleUnlocked, setPuzzleUnlocked] = useState<puzzleUnlockedProp>(initialPuzzleStatus);
   const [puzzleState, setPuzzleState] = useState<puzzleStateProp>(initialPuzzleState);
   const [bookCutouts, setBookCutouts] = useState<bookCutoutsProp>({book0: [], book1: []})
-  //const [puzzleNums, setPuzzleNums] = useState<puzzleNumsProp>(initialPuzzleNums);
+  const [totalPuzzlesCompleted, setTotalPuzzleCompleted] = useState<number>(0);
+
+  const unlockPuzzle = (puzzleName: string) => {
+    setPuzzleUnlocked((prev) => ({...prev, [puzzleName]: true}));
+    setTotalPuzzleCompleted((prev) => prev + 1);
+  }
 
   return (
-    <PuzzleContext.Provider value={{puzzleUnlocked, setPuzzleUnlocked, puzzleState, setPuzzleState, bookCutouts, setBookCutouts}}>
+    <PuzzleContext.Provider value={{
+      puzzleUnlocked, setPuzzleUnlocked, 
+      puzzleState, setPuzzleState, 
+      bookCutouts, setBookCutouts, 
+      totalPuzzlesCompleted, unlockPuzzle
+    }}>
       {children}
     </PuzzleContext.Provider>
   )

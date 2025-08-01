@@ -1,0 +1,1 @@
+export const playerId = Math.floor(Math.random() * 10000);

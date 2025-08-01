@@ -153,3 +153,54 @@
   left: 62px;
   top: 30px;
 }
+
+.sunbox-clickbox {
+  position: absolute;
+  width: 76px;
+  height: 59px;
+  left: 423px;
+  top: 249px;
+}
+
+.sunbox-container {
+  position: absolute;
+  width: 375px;
+  height: 250px;
+  left: 155px;
+  top: 90px;
+  z-index: 0;
+}
+
+.sunbox-textbox {
+  position: absolute;
+  left: 270px;
+  top: 123px;
+  width: 100px;
+  border: 4px solid black;
+  border-radius: 2%;
+  font-size: 25px;
+  padding: 0 15px 0 15px;
+}
+
+.sunbox-lid {
+  position: absolute;
+  width: 165px;
+  height: 150px;
+  top: 165px;
+  transition: left 1s;
+  z-index: 10;
+}
+
+
+.sunbox-button {
+  position: absolute;
+  left: 415px;
+  top: 123px;
+  cursor: pointer;
+}
+
+.sapphire-sunbox {
+  position: absolute;
+  left: 285px;
+  top: 185px;
+}

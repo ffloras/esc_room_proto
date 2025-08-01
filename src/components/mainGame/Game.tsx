@@ -9,7 +9,7 @@ const Game = () => {
   const startingMenu = 4;
 
   return (
-    <div className="game-window">
+    <div className="game-window no-highlighting">
       <div className="side-display" style={{display: stage.current == startingMenu ? "none" : "block"}}>
         <SidebarContainer/>
       </div>

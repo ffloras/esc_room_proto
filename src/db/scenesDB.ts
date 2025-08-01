@@ -31,6 +31,7 @@ import Safe from "../components/scenes/ClockRoom/Safe";
 import flowerDrawerImg from "../assets/img/subscenes/chairRoom/flowerDrawer.png"
 import Wardrobe from "../components/scenes/ChairRoom/Wardrobe";
 import BookClue from "../components/scenes/ChairRoom/BookClue";
+import SunBox from "../components/scenes/ChairRoom/SunBox";
 
 //Painting Room subscenes
 //import wardrobeImg from "../assets/img/subscenes/paintingRoom/wardrobeLocked.png"
@@ -74,6 +75,7 @@ export const Stages: StagesProp = {
     main: ChairRoom,
     wardrobe: Wardrobe,
     bookClue: BookClue,
+    sunBox: SunBox,
   },
   3: 
   {

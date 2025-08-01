@@ -78,7 +78,7 @@ const FlowerDrawer = () => {
   const [imgLoaded, setImgLoaded] = useState<imgLoadedProp>({bottomDrawer: false, flower: false});
 
   const {activeItem, setActiveItem} = use(ActiveItemContext);
-  const {puzzleUnlocked, setPuzzleUnlocked} = use(PuzzleContext)
+  const {puzzleUnlocked, unlockPuzzle} = use(PuzzleContext)
   const {removeSidebarItem} = use(ItemsContext);
   
 
@@ -88,7 +88,7 @@ const FlowerDrawer = () => {
 
   const unlockPotion = (potion: string | null) => {
     if (!(potion == 'agPotion' || potion == 'coPotion' || potion == 'niPotion')) return;
-    setPuzzleUnlocked((prev) => ({...prev, [potion]: true}));
+    unlockPuzzle(`${potion}`);
     if (potion === activeItem) {
       setActiveItem("");
       removeSidebarItem(potion);
@@ -138,7 +138,7 @@ const FlowerDrawer = () => {
     if (flowerColor.wheel == 'co' && flowerColor.color == 6) {
       setPotionsSelected("");
       setFlowerColor((prev) => ({...prev, color: 1}))
-      setPuzzleUnlocked((prev) => ({...prev, flower: true}))
+      unlockPuzzle("flower");
     }
   }, [flowerColor])
 

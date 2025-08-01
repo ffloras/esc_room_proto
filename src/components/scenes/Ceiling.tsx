@@ -4,17 +4,18 @@ import { use, useRef, useState} from "react"
 //components
 import MainDirectionButton from "../mainGame/MainDirectionButton"
 import CeilingGear from "../subscenes/CeilingGear"
+import LoadingScreen from "../mainGame/LoadingScreen"
 //images
 import ceilingImg from '../../assets/img/scenes/ceiling.png'
 import sliderImg from "../../assets/img/subscenes/ceiling/slider.png"
-import thumbImg from "../../assets/img/subscenes/ceiling/thumb.png"
 import ceilingGearsImg from "../../assets/img/subscenes/ceiling/ceilingGears.png"
 import gearImg from "../../assets/img/items/gear.png"
 //contexts
 import { PuzzleContext } from "../../contexts/PuzzleContext"
 import { ActiveItemContext } from "../../contexts/ActiveItemContext"
 import { ItemsContext } from "../../contexts/ItemsContext"
-import LoadingScreen from "../mainGame/LoadingScreen"
+import { delay } from "../../generalFunctions"
+
 
 type gearRotationProp = {
   [key: string]: {
@@ -59,11 +60,10 @@ const gearsInfo: gearRotationProp= {
 }
 
 const Ceiling = () => {
-  const [movement, setMovement] = useState<number>(0);
   const [textActive, setTextActive] = useState<boolean>(false);
   const sliderRef = useRef<HTMLDivElement>(null);
   const thumbRef = useRef<HTMLDivElement>(null);
-  const {puzzleUnlocked, setPuzzleUnlocked} = use(PuzzleContext);
+  const {puzzleUnlocked, unlockPuzzle, puzzleState, setPuzzleState} = use(PuzzleContext);
   const {activeItem, setActiveItem} = use(ActiveItemContext);
   const {removeSidebarItem} = use(ItemsContext);
 
@@ -74,7 +74,7 @@ const Ceiling = () => {
     
     e.preventDefault();
     if (!puzzleUnlocked.ceilingGear) {
-      setTextActive(true);
+      if (!textActive) showText();
       return;
     }
     if (!thumbRef.current || !sliderRef.current) return;
@@ -95,7 +95,7 @@ const Ceiling = () => {
       if (newTop < topEdge) newTop = topEdge;
       if (newTop > bottomEdge) newTop = bottomEdge;
 
-      setMovement(newTop);
+      setPuzzleState((prev) => ({...prev, ceilingRotation: [newTop]}))
     }
     function onMouseUp() {
       document.removeEventListener('mousemove', onMouseMove);
@@ -103,15 +103,20 @@ const Ceiling = () => {
     }
   }
 
+  const showText = async () => {
+    setTextActive(true);
+    await delay(1000);
+    setTextActive(false);
+  }
 
   const activateGear = () => {
     if (activeItem == "gear") {
       setTextActive(false);
-      setPuzzleUnlocked((prev) => ({...prev, ceilingGear: true}));
+      unlockPuzzle("ceilingGear");
       setActiveItem(null);
       removeSidebarItem("gear");
     } else {
-      setTextActive(true);
+      if (!textActive && !puzzleUnlocked.ceilingGear) showText();
     }
   }
 
@@ -131,15 +136,15 @@ const Ceiling = () => {
         <div
           className="ceiling-thumb"
           style={{
-            backgroundImage: `url(${thumbImg})`,
-            top: `${movement}px`
+            backgroundColor: puzzleUnlocked.ceilingGear ? '#575757ff' : '#b7b7b7ff',
+            top: `${puzzleState.ceilingRotation[0]}px`
           }}
           onMouseDown={(e) => slide(e)}
           ref={thumbRef}
         ></div>
       </div>
 
-      {gears.map((gear, index) => (<CeilingGear key={gear} {...gearsInfo[gear]} movement={movement} location={gear} spritePos={index}/>))}
+      {gears.map((gear, index) => (<CeilingGear key={gear} {...gearsInfo[gear]} location={gear} spritePos={index}/>))}
 
       <MainDirectionButton direction="down" />
     </div>

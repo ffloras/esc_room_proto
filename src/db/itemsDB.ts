@@ -13,6 +13,7 @@ import seedImg from '../assets/img/items/seedsItem.png'
 import mushroomImg from '../assets/img/items/mushroom.png'
 import bugImg from '../assets/img/items/beetle.png'
 import emeraldImg from '../assets/img/items/emerald.png'
+import sapphireImg from '../assets/img/items/sapphire.png'
 import scissorsImg from '../assets/img/items/scissors.png'
 import hammerImg from '../assets/img/items/hammer.png'
 import acornImg from '../assets/img/items/acorn.png'
@@ -105,7 +106,7 @@ export const Items: ItemsProp = {
     isObtained: false,
     zindex: 0,
   },
-  mirrorFragment2: {
+  mirrorFragment3: {
     name: "Mirror Piece",
     img: mirrorFragment2,
     isObtained: false,
@@ -148,6 +149,12 @@ export const Items: ItemsProp = {
     img: emeraldImg,
     isObtained: false,
     className: "emerald-moonBox"
+  },
+  sapphire: {
+    name: "Sapphire",
+    img: sapphireImg,
+    isObtained: false,
+    className: "sapphire-sunbox"
   },
   scissors: {
     name: "Scissors",

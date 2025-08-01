@@ -8,6 +8,8 @@ import Bird from "./Bird";
 import stoolImg from '../../../assets/img/subscenes/chairRoom/stool.png'
 import { SceneContext } from "../../../contexts/SceneContext";
 import { use } from "react";
+import BasicSubscene from "../../subscenes/BasicSubscene";
+import sunBoxImg from '../../../assets/img/subscenes/chairRoom/sunboxSm.png'
 
 const ChairRoom = () => {
   const {changeScene} = use(SceneContext);
@@ -32,6 +34,7 @@ const ChairRoom = () => {
 
       <BasicItem name="scissors"/>
       <div className="book-clue-clickbox" onClick={() => changeScene("bookClue", "main")}></div>
+      <BasicSubscene name="sunbox puzzle" className="sunbox-clickbox" prevScene="main" next="sunBox" img={sunBoxImg}/>
 
       <MainDirectionButton direction="left"/>
       <MainDirectionButton direction="up"/>

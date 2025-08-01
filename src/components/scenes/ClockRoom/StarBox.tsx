@@ -32,7 +32,7 @@ const ansArray: (number | null)[][] =
   ];
 
 const StarBox = () => {
-  const { puzzleUnlocked, setPuzzleUnlocked } = use(PuzzleContext);
+  const { puzzleUnlocked, unlockPuzzle } = use(PuzzleContext);
 
   const [puzzleArray, setPuzzleArray] = useState<(number | null)[][]>(puzzleUnlocked.starBox ? ansArray : testArray)
 
@@ -74,7 +74,7 @@ const StarBox = () => {
         if (puzzleArray[i][j] !== ansArray[i][j]) return;
       }
     } 
-    setPuzzleUnlocked((prev) => ({...prev, starBox: true}))
+    unlockPuzzle("starBox");
   }, [puzzleArray])
 
   return (

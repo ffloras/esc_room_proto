@@ -2,22 +2,22 @@ import React, { createContext, type FC, type ReactNode, useState } from "react";
 
 type puzzleUnlockedProp = {
   [key: string]: boolean;
-}
+};
 
 type puzzleStateProp = {
   [key: string]: number[];
-}
+};
 
 type divProp = {
   top: number;
   left: number;
   width: number;
   height: number;
-}
+};
 
 type bookCutoutsProp = {
-  [key: string]: divProp[],
-}
+  [key: string]: divProp[];
+};
 
 // type puzzleNumsProp = {
 //   [key: string]: number;
@@ -32,7 +32,7 @@ type PuzzleContextProp = {
   setBookCutouts: React.Dispatch<React.SetStateAction<bookCutoutsProp>>;
   totalPuzzlesCompleted: number;
   unlockPuzzle: (puzzleName: string) => void;
-}
+};
 
 export const PuzzleContext = createContext<PuzzleContextProp>({
   puzzleUnlocked: {},
@@ -43,27 +43,26 @@ export const PuzzleContext = createContext<PuzzleContextProp>({
   setBookCutouts: () => {},
   totalPuzzlesCompleted: 0,
   unlockPuzzle: () => {},
-})
+});
 
 type PuzzleProviderProp = {
   children: ReactNode;
-}
+};
 
-
-export const PuzzleProvider: FC<PuzzleProviderProp> = ({children}) => {
+export const PuzzleProvider: FC<PuzzleProviderProp> = ({ children }) => {
   const initialPuzzleStatus = {
     starBox: false,
     ceilingGear: false,
     coPotion: false,
     agPotion: false,
     niPotion: false,
-    flower: true,
+    flower: false,
     paintingBox: false,
-    wardrobe: true,
+    wardrobe: false,
     clockBottom: false,
     windowBoard: false,
     deskDrawerTop: false,
-    deskDrawerBottom: true,
+    deskDrawerBottom: false,
     obtainSeeds: false,
     seedsBird: false,
     acornBird: false,
@@ -76,26 +75,26 @@ export const PuzzleProvider: FC<PuzzleProviderProp> = ({children}) => {
     mushroomWardrobe: false,
     wallPatch: false,
     moonBox: false,
-    aegir: true,
-    thebe: true,
-    atlas: true,
-    rhea: true,
-    phobos: true,
-    oberon: true,
-    titania: true,
-    triton: true,
-    despina: true,
-    kore: true,
+    aegir: false,
+    thebe: false,
+    atlas: false,
+    rhea: false,
+    phobos: false,
+    oberon: false,
+    titania: false,
+    triton: false,
+    despina: false,
+    kore: false,
     safeUnlock: false,
     safeOpen: false,
     sunBoxLeft: false,
     sunBoxRight: false,
-    mirrorFragment1: true,
-    mirrorFragment2: true,
+    mirrorFragment1: false,
+    mirrorFragment2: false,
     mirrorFragment3: false,
     mirrorComplete: false,
     door: false,
-  }
+  };
 
   const initialPuzzleState: puzzleStateProp = {
     paintingBox: [0, 0, 0, 0, 0],
@@ -114,30 +113,41 @@ export const PuzzleProvider: FC<PuzzleProviderProp> = ({children}) => {
     triton: [430, 350],
     despina: [380, 225],
     kore: [445, 270],
-  }
+  };
 
   // const initialPuzzleNums = {
   //   wardrobeInside: 0,
   // }
 
-  const [puzzleUnlocked, setPuzzleUnlocked] = useState<puzzleUnlockedProp>(initialPuzzleStatus);
-  const [puzzleState, setPuzzleState] = useState<puzzleStateProp>(initialPuzzleState);
-  const [bookCutouts, setBookCutouts] = useState<bookCutoutsProp>({book0: [], book1: []})
+  const [puzzleUnlocked, setPuzzleUnlocked] =
+    useState<puzzleUnlockedProp>(initialPuzzleStatus);
+  const [puzzleState, setPuzzleState] =
+    useState<puzzleStateProp>(initialPuzzleState);
+  const [bookCutouts, setBookCutouts] = useState<bookCutoutsProp>({
+    book0: [],
+    book1: [],
+  });
   const [totalPuzzlesCompleted, setTotalPuzzleCompleted] = useState<number>(0);
 
   const unlockPuzzle = (puzzleName: string) => {
-    setPuzzleUnlocked((prev) => ({...prev, [puzzleName]: true}));
+    setPuzzleUnlocked((prev) => ({ ...prev, [puzzleName]: true }));
     setTotalPuzzleCompleted((prev) => prev + 1);
-  }
+  };
 
   return (
-    <PuzzleContext.Provider value={{
-      puzzleUnlocked, setPuzzleUnlocked, 
-      puzzleState, setPuzzleState, 
-      bookCutouts, setBookCutouts, 
-      totalPuzzlesCompleted, unlockPuzzle
-    }}>
+    <PuzzleContext.Provider
+      value={{
+        puzzleUnlocked,
+        setPuzzleUnlocked,
+        puzzleState,
+        setPuzzleState,
+        bookCutouts,
+        setBookCutouts,
+        totalPuzzlesCompleted,
+        unlockPuzzle,
+      }}
+    >
       {children}
     </PuzzleContext.Provider>
-  )
-}
+  );
+};

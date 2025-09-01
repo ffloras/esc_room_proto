@@ -139,7 +139,6 @@
 }
 
 .book-clue-clickbox {
-  border: 1px solid red;
   position: absolute;
   width: 65px;
   height: 80px;
@@ -190,7 +189,6 @@
   transition: left 1s;
   z-index: 10;
 }
-
 
 .sunbox-button {
   position: absolute;

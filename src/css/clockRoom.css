@@ -1,7 +1,6 @@
-
 .starBox-clickbox {
   position: absolute;
-  border: 1px solid red;
+
   width: 100px;
   height: 55px;
   left: 450px;
@@ -56,47 +55,47 @@
   left: 70px;
   width: 100px;
   height: 100px;
- }
+}
 
- .clock-bottom-clickbox {
+.clock-bottom-clickbox {
   position: absolute;
   top: 185px;
   left: 70px;
   width: 100px;
   height: 230px;
- }
+}
 
- .clock-star-puzzle {
+.clock-star-puzzle {
   position: absolute;
   left: 194px;
- }
+}
 
- .sliding-door-background {
+.sliding-door-background {
   position: absolute;
   width: 240px;
   height: 70px;
-  background-color:rgb(40, 40, 40);
+  background-color: rgb(40, 40, 40);
   left: 220px;
   bottom: 25px;
   z-index: -10;
- }
+}
 
-  .sliding-door {
+.sliding-door {
   position: absolute;
   width: 240px;
   height: 55px;
-  background-color:rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255);
   left: 220px;
   transition: top 1s;
   border: 3px solid black;
- }
+}
 
- .clock-counter {
+.clock-counter {
   width: 26px;
   height: 30px;
- }
+}
 
- .clock-pointer-container {
+.clock-pointer-container {
   position: absolute;
   left: 335px;
   top: 182px;
@@ -105,20 +104,20 @@
   z-index: 20;
   /* transition: transform 2s; */
   /* border: 1px solid black; */
- }
+}
 
- .clock-pointer {
+.clock-pointer {
   position: absolute;
- }
+}
 
- .clock-pointer-clickbox {
+.clock-pointer-clickbox {
   position: absolute;
   width: 100%;
   height: 50%;
-  /* border: 1px solid red; */
- }
+  /*  */
+}
 
- .clock-ans-slot {
+.clock-ans-slot {
   position: absolute;
   width: 24px;
   height: 25px;
@@ -126,9 +125,9 @@
   border: 2px solid black;
   font-size: 15px;
   text-align: center;
- }
+}
 
- .clock-reset-button {
+.clock-reset-button {
   position: absolute;
   width: 20px;
   height: 20px;
@@ -137,10 +136,9 @@
   left: 209px;
   top: 17px;
   background-size: cover;
-  
- }
+}
 
- .clock-reset-button-clickbox {
+.clock-reset-button-clickbox {
   position: absolute;
   width: 20px;
   height: 20px;
@@ -149,29 +147,29 @@
   top: 375px;
   z-index: 10;
   cursor: pointer;
- }
+}
 
- .clock-top {
+.clock-top {
   position: absolute;
   left: 163px;
- }
+}
 
- .clock-hand {
+.clock-hand {
   position: absolute;
   transform-origin: 50% 100%;
- }
+}
 
- .hour-hand {
+.hour-hand {
   left: 333px;
   top: 214px;
- }
+}
 
- .minute-hand {
+.minute-hand {
   left: 334px;
   top: 205px;
- }
+}
 
- .clock-hand-origin {
+.clock-hand-origin {
   position: absolute;
   top: 265px;
   left: 337px;
@@ -180,198 +178,194 @@
   width: 5px;
   height: 5px;
   border-radius: 50%;
- }
+}
 
- .clock-hand-sm {
-    position: absolute;
-    background-color: black;
-    transform-origin: 50% 100%;
-    pointer-events: none;
- }
+.clock-hand-sm {
+  position: absolute;
+  background-color: black;
+  transform-origin: 50% 100%;
+  pointer-events: none;
+}
 
- .clock-hour-sm {
+.clock-hour-sm {
   width: 2px;
   height: 10px;
   left: 103px;
   top: 135px;
- }
+}
 
- .clock-minute-sm {
+.clock-minute-sm {
   width: 2px;
   height: 15px;
   left: 103px;
   top: 130px;
- }
+}
 
-  .book0-clickbox {
+.book0-clickbox {
   position: absolute;
   width: 50px;
   height: 70px;
   left: 530px;
   top: 123px;
-  border: 1px solid red;
- }
+}
 
- .book1-clickbox {
+.book1-clickbox {
   position: absolute;
   width: 50px;
   height: 70px;
   left: 585px;
   top: 123px;
-  border: 1px solid red;
- }
+}
 
- .book-top-page {
+.book-top-page {
   position: absolute;
   left: 344px;
   top: 80px;
   width: 243px;
   height: 300px;
-  /* border: 1px solid red; */
- }
+  /*  */
+}
 
- .book-left-page {
+.book-left-page {
   position: absolute;
   left: 98px;
   top: 80px;
   width: 243px;
   height: 300px;
- }
+}
 
- .book-cut-section {
+.book-cut-section {
   position: absolute;
   border: 1px solid red;
- }
+}
 
- .book-reset-button {
+.book-reset-button {
   position: absolute;
   cursor: pointer;
   left: 625px;
   top: 352px;
   border: 2px solid black;
   border-radius: 50%;
- }
+}
 
- .book-page-cutout {
+.book-page-cutout {
   position: absolute;
- }
+}
 
- .crossword-clickbox {
+.crossword-clickbox {
   position: absolute;
   width: 170px;
   height: 140px;
   left: 190px;
   top: 140px;
-  border: 1px solid red;
- }
+}
 
- .crossword-paper {
+.crossword-paper {
   position: absolute;
   cursor: pointer;
- }
+}
 
- .crossword-paper-horizontal {
-  background-image: url('/src/assets/img/subscenes/clockRoom/crosswordPapersHorizontal255x45.png')
- }
+.crossword-paper-horizontal {
+  background-image: url("/src/assets/img/subscenes/clockRoom/crosswordPapersHorizontal255x45.png");
+}
 
- .moonBox-clickbox {
+.moonBox-clickbox {
   position: absolute;
   width: 80px;
   height: 50px;
   left: 460px;
   top: 340px;
-  border: 1px solid red;
- }
+}
 
- .moonBox-container {
+.moonBox-container {
   position: absolute;
   width: 395px;
   height: 315px;
   top: 50px;
   left: 145px;
- }
+}
 
- .moonBox-counters {
+.moonBox-counters {
   font-size: 42px;
   top: 150px;
   width: 50px;
- }
+}
 
- .moonBox-counter0 {
+.moonBox-counter0 {
   left: 68px;
- }
+}
 
- .moonBox-counter1 {
+.moonBox-counter1 {
   left: 137px;
- }
+}
 
- .moonBox-counter2 {
+.moonBox-counter2 {
   left: 207px;
- }
+}
 
- .moonBox-counter3 {
+.moonBox-counter3 {
   left: 277px;
- }
+}
 
- .emerald-moonBox {
+.emerald-moonBox {
   position: absolute;
   left: 137px;
   top: 108px;
- }
+}
 
- .safe-clickbox {
+.safe-clickbox {
   position: absolute;
   width: 85px;
   height: 90px;
-  border: 1px solid red;
+
   left: 550px;
   top: 300px;
- }
+}
 
- .safe {
+.safe {
   position: absolute;
   width: 350px;
   height: 340px;
   left: 130px;
   top: 50px;
- }
+}
 
- .safe-lock {
+.safe-lock {
   position: absolute;
   width: 96px;
   height: 40px;
   left: 292px;
   top: 231px;
   transition: transform 1s;
- }
+}
 
- .safe-counters {
-    width: 30px;
-    height: 74px;
-    top: 115px;
- }
+.safe-counters {
+  width: 30px;
+  height: 74px;
+  top: 115px;
+}
 
- .safe-counter-0 {
-    left: 274px;
- }
+.safe-counter-0 {
+  left: 274px;
+}
 
- .safe-counter-1 {
-    left: 324px;
- }
+.safe-counter-1 {
+  left: 324px;
+}
 
- .safe-counter-2 {
-    left: 374px;
- }
+.safe-counter-2 {
+  left: 374px;
+}
 
- .mirror-fragment-2 {
-    position: absolute;
-    left: 265px;
-    top: 144px;
-    transform: rotate(3deg);
- }
+.mirror-fragment-2 {
+  position: absolute;
+  left: 265px;
+  top: 144px;
+  transform: rotate(3deg);
+}
 
 .wall-patch {
-  background-image: url('/src/assets/img/subscenes/clockRoom/wallPatch83x44.png');
+  background-image: url("/src/assets/img/subscenes/clockRoom/wallPatch83x44.png");
   position: absolute;
   width: 83px;
   height: 44px;

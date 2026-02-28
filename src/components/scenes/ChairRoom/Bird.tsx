@@ -1,13 +1,13 @@
-import birdSpritesheet from '../../../assets/img/subscenes/chairRoom/birdSpritesheet74x46-55x50.png'
-import { use, useEffect, useState } from 'react'
-import { PuzzleContext } from '../../../contexts/PuzzleContext'
-import { ActiveItemContext } from '../../../contexts/ActiveItemContext'
-import { ItemsContext } from '../../../contexts/ItemsContext'
-import { delay } from '../../../generalFunctions'
+import birdSpritesheet from "../../../assets/img/subscenes/chairRoom/birdSpritesheet74x46-55x50.png";
+import { use, useEffect, useState } from "react";
+import { PuzzleContext } from "../../../contexts/PuzzleContext";
+import { ActiveItemContext } from "../../../contexts/ActiveItemContext";
+import { ItemsContext } from "../../../contexts/ItemsContext";
+import { delay } from "../../../generalFunctions";
 
 type imgStatesProp = {
   [key: string]: number;
-}
+};
 
 const Bird = () => {
   const birdStates: imgStatesProp = {
@@ -17,36 +17,33 @@ const Bird = () => {
     acorn: 3,
     mushroom: 4,
     bug: 5,
-    flapDown: 6, 
+    flapDown: 6,
     flapUp: 7,
-  }
+  };
 
-  const messageStates: imgStatesProp= {
+  const messageStates: imgStatesProp = {
     seeds: 0,
     acorn: 1,
     mushroom: 2,
     bug: 3,
     default: 4,
-  }
+  };
 
-
-  const {puzzleUnlocked, unlockPuzzle} = use(PuzzleContext);
-  const [currentFood, setCurrentFood] = useState<string>(getFoodStatus())
+  const { puzzleUnlocked, unlockPuzzle } = use(PuzzleContext);
+  const [currentFood, setCurrentFood] = useState<string>(getFoodStatus());
   const [birdState, setBirdState] = useState<string>("default");
   const [showMessage, setShowMessage] = useState<boolean>(false);
-  const {activeItem, setActiveItem} = use(ActiveItemContext);
-  const {removeSidebarItem} = use(ItemsContext);
+  const { activeItem, setActiveItem } = use(ActiveItemContext);
+  const { removeSidebarItem } = use(ItemsContext);
   const [isFlying, setIsFlying] = useState<boolean>(false);
 
   function getFoodStatus() {
     if (!puzzleUnlocked.seedsBird) return "seeds";
-    if (!puzzleUnlocked.acornBird) return "acorn";
-    if (!puzzleUnlocked.mushroomBird) return "mushroom";
     if (!puzzleUnlocked.bugBird) return "bug";
+    if (!puzzleUnlocked.mushroomBird) return "mushroom";
+    if (!puzzleUnlocked.acornBird) return "acorn";
     else return "default";
   }
-
-  
 
   const animateBird = async () => {
     const eat = async () => {
@@ -54,7 +51,7 @@ const Bird = () => {
       await delay(700);
       setBirdState("default");
       await delay(500);
-    }
+    };
 
     const chirp = async () => {
       if (showMessage) return;
@@ -63,7 +60,7 @@ const Bird = () => {
       await delay(500);
       setBirdState("default");
       setShowMessage(false);
-    }
+    };
 
     if (activeItem === currentFood) {
       await eat();
@@ -74,19 +71,19 @@ const Bird = () => {
     } else {
       await chirp();
     }
-  }
+  };
 
   useEffect(() => {
     const startFlying = async () => {
       await delay(800);
       setIsFlying(true);
-    }
+    };
 
     setCurrentFood(getFoodStatus());
-    if (puzzleUnlocked.bugBird && !puzzleUnlocked.birdComplete) {
+    if (puzzleUnlocked.acornBird && !puzzleUnlocked.birdComplete) {
       startFlying();
     }
-  }, [puzzleUnlocked])
+  }, [puzzleUnlocked]);
 
   useEffect(() => {
     const fly = async () => {
@@ -98,23 +95,27 @@ const Bird = () => {
       }
       //setIsFlying(false);
       unlockPuzzle("birdComplete");
-    }
+    };
 
     if (isFlying) {
       fly();
     }
-  }, [isFlying])
+  }, [isFlying]);
 
   return (
-    <div className={`bird-container ${isFlying ? 'bird-fly' : ''} ${puzzleUnlocked.birdComplete ? 'bird-complete' : ''}`}>
-      <div className="bird-bedroom"
+    <div
+      className={`bird-container ${isFlying ? "bird-fly" : ""} ${puzzleUnlocked.birdComplete ? "bird-complete" : ""}`}
+    >
+      <div
+        className="bird-bedroom"
         style={{
           backgroundImage: `url(${birdSpritesheet})`,
           backgroundPosition: `-${birdStates[birdState] * 74}px 0px`,
         }}
         onClick={animateBird}
       ></div>
-      <div className='food-message' 
+      <div
+        className="food-message"
         style={{
           backgroundImage: `url(${birdSpritesheet})`,
           backgroundPosition: `-${messageStates[currentFood] * 55}px -46px`,
@@ -122,7 +123,7 @@ const Bird = () => {
         }}
       ></div>
     </div>
-  )
-}
+  );
+};
 
-export default Bird
+export default Bird;

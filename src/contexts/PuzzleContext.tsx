@@ -51,13 +51,13 @@ type PuzzleProviderProp = {
 
 export const PuzzleProvider: FC<PuzzleProviderProp> = ({ children }) => {
   const initialPuzzleStatus = {
-    starBox: false,
+    starBox: true,
     ceilingGear: false,
     coPotion: false,
     agPotion: false,
     niPotion: false,
-    flower: false,
-    paintingBox: false,
+    flower: true,
+    paintingBox: true,
     wardrobe: false,
     clockBottom: false,
     windowBoard: false,
@@ -70,9 +70,9 @@ export const PuzzleProvider: FC<PuzzleProviderProp> = ({ children }) => {
     mushroomBird: false,
     bugBird: false,
     birdComplete: false,
-    ironKeyWardrobe: false,
-    bugWardrobe: false,
-    mushroomWardrobe: false,
+    //ironKeyWardrobe: false,
+    //bugWardrobe: false,
+    //mushroomWardrobe: false,
     wallPatch: false,
     moonBox: false,
     aegir: false,
@@ -94,11 +94,17 @@ export const PuzzleProvider: FC<PuzzleProviderProp> = ({ children }) => {
     mirrorFragment3: false,
     mirrorComplete: false,
     door: false,
+    mushroomJarOpen: false,
+    mushroomJarEmpty: false,
+    obtainBug: false,
+    acornBox: false,
+    acornTaken: false,
   };
 
   const initialPuzzleState: puzzleStateProp = {
     paintingBox: [0, 0, 0, 0, 0],
     moonBox: [0, 0, 0, 0],
+    acornBox: [0, 0, 0, 0],
     safeUnlock: [0, 0, 0],
     clockBottom: [-1, -1, -1, -1, -1, -1, -1, -1],
     clockBottomPosition: [0],

@@ -109,7 +109,105 @@
   z-index: 10;
 }
 
+.painting1 {
+  position: absolute;
+  top: 50px;
+  left: 130px;
+  z-index: 10;
+}
 
+.painting2 {
+  position: absolute;
+  top: 25px;
+  left: 300px;
+  z-index: 10;
+}
 
+.painting3 {
+  position: absolute;
+  top: 40px;
+  left: 460px;
+  z-index: 10;
+}
 
+.painting4 {
+  position: absolute;
+  top: 190px;
+  left: 170px;
+  z-index: 10;
+}
 
+.painting5 {
+  position: absolute;
+  top: 225px;
+  left: 310px;
+  z-index: 10;
+}
+
+.curtains {
+  position: absolute;
+  z-index: 10;
+}
+
+.display {
+  position: absolute;
+  top: 170px;
+  left: 70px;
+  z-index: 10;
+}
+
+.chandelier {
+  position: absolute;
+  top: 0px;
+  right: 5px;
+  z-index: 10;
+}
+
+.wall-bug {
+  position: absolute;
+  /* top: 400x;
+  right: 400px; */
+  z-index: 10;
+  width: 30px;
+  height: 30px;
+  /* border: 1px solid red; */
+}
+
+.acornBox-clickbox {
+  position: absolute;
+  width: 58px;
+  height: 30px;
+  top: 208px;
+  left: 78px;
+  z-index: 20;
+}
+
+.acornBox-container {
+  position: absolute;
+  width: 373px;
+  height: 324px;
+  top: 40px;
+  right: 160px;
+}
+
+.acornBox-counters {
+  font-size: 42px;
+  top: 110px;
+  width: 50px;
+}
+
+.acornBox-counter0 {
+  left: 60px;
+}
+
+.acornBox-counter1 {
+  left: 129px;
+}
+
+.acornBox-counter2 {
+  left: 196px;
+}
+
+.acornBox-counter3 {
+  left: 265px;
+}
